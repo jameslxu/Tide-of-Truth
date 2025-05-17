@@ -5,7 +5,7 @@
 (set: $hourLeft to 60)   /* 60‑hour lab timer */
 (set: $isDamFortified to false)
 (set: $landfallTime to (either: 0,1,2,3,4,5,6,7,8,9))
-(start: ?modal)  /* hidden modal layer */
+|modal>[ ]  /* hidden modal hook */
 Welcome to *Tide of Truth*.
 What's your name?
 |(input-box: bind $playerName)[Submit]->[[Intro]]
@@ -17,7 +17,12 @@ What's your name?
 ''Name:'' $playerName | ''Level:'' $playerLevel | ''Credit:'' $credit
 You’re $playerName, fresh out of school, eager to prove your math can save lives.
 * [[Begin->Backstory1]]
-* [[Wait->Start]]
+* [[Take a moment->WaitBreath]]
+
+:: WaitBreath
+You take a deep breath on the pier, waves slapping the pylons below. The salty air and distant gulls remind you what you’re fighting to protect.
+
+[[Ready to continue->Backstory1]]
 
 :: Backstory1
 ''Name:'' $playerName | ''Level:'' $playerLevel | ''Credit:'' $credit
