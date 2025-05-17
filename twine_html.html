@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tide of Truth</title>
+    <script>
+        window.storyFormat = {
+            "name": "Harlowe 3.3.3",
+            "version": "3.3.3",
+            "author": "Leon Arnott",
+            "description": "Harlowe is a story format for Twine 2, designed to integrate seamlessly with your writing.",
+            "proofing": false,
+            "source": ""
+        };
+
+        // Passages data
+        window.story = {
+            "name": "Tide of Truth",
+            "startnode": "1",
+            "creator": "Twine",
+            "creator-version": "2.5.1",
+            "format": "Harlowe",
+            "format-version": "3.3.3",
+            "passages": [
+                {
+                    "name": "StoryBanner",
+                    "tags": ["header"],
+                    "pid": "0",
+                    "text": "''Level:'' $playerLevel | ''Credit:'' $credit (if:$hourLeft < 60)[| ''Hours left:'' $hourLeft]"
+                },
+                {
+                    "name": "Start",
+                    "tags": [],
+                    "pid": "1",
+                    "text": "(set:$playerName to \"\")\n(set:$playerLevel to \"Beginner\")\n(set:$credit to 0)\n(set:$hourLeft to 60)\n(set:$isDamFortified to false)\n(set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))\nWelcome to *Tide of Truth*.\nWhat's your name?\n|(input-box: bind $playerName)[Enter]->[[Intro]]"
+                },
+                {
+                    "name": "StoryFooter",
+                    "tags": ["footer"],
+                    "pid": "2",
+                    "text": "(link:\"Save game now\")[ (save-game:\"slot1\") ]"
+                },
+                {
+                    "name": "Intro",
+                    "tags": [],
+                    "pid": "3",
+                    "text": "You're $playerName, eager to prove your math can save lives.\n* [[Begin->Backstory1]]\n* [[Take a moment->WaitBreath]]"
+                },
+                {
+                    "name": "WaitBreath",
+                    "tags": [],
+                    "pid": "4",
+                    "text": "You breathe the salty air on Stormhaven's pier, steadying your nerves.\n[[Ready->Backstory1]]"
+                },
+                {
+                    "name": "Backstory1",
+                    "tags": [],
+                    "pid": "5",
+                    "text": "Stormhaven is proud but vulnerable, no stranger to hurricanes.\n[[Continue->Backstory2]]"
+                },
+                {
+                    "name": "Backstory2",
+                    "tags": [],
+                    "pid": "6",
+                    "text": "Hurricane *Calypso* brews offshore. Your tide‑model expertise could protect thousands—after you earn a task‑force spot.\n[[Request an interview->InterviewIntro]]"
+                },
+                {
+                    "name": "InterviewIntro",
+                    "tags": [],
+                    "pid": "7",
+                    "text": "The council schedules a quick skills quiz.\n[[Begin quiz->Q1]]"
+                },
+                {
+                    "name": "Q1",
+                    "tags": [],
+                    "pid": "8",
+                    "text": "Hypotenuse with legs 7 km & 24 km?\n* [[14 km->WrongQ1]]\n* [[17 km->WrongQ1]]\n* [[25 km->Q2]]\n* [[31 km->WrongQ1]]"
+                },
+                {
+                    "name": "WrongQ1",
+                    "tags": [],
+                    "pid": "9",
+                    "text": "Not quite—remember the 7‑24‑25 triple.\n(link:\"Video help\")[(open-url:\"https://youtu.be/77XAdyWz5SM\")]\n[[Retry->Q1]]"
+                },
+                {
+                    "name": "Q2",
+                    "tags": [],
+                    "pid": "10",
+                    "text": "If sin θ = 3/4 and opposite = 9 m, hypotenuse?\n* [[12 m->Q3]]\n* [[7.5 m->WrongQ2]]\n* [[6 m->WrongQ2]]\n* [[3 m->WrongQ2]]"
+                },
+                {
+                    "name": "WrongQ2",
+                    "tags": [],
+                    "pid": "11",
+                    "text": "Hint: hyp = 9 / 0.75.\n(link:\"Video\")[(open-url:\"https://youtu.be/77XAdyWz5SM\")]\n[[Retry->Q2]]"
+                },
+                {
+                    "name": "Q3",
+                    "tags": [],
+                    "pid": "12",
+                    "text": "Hypotenuse = 5 m, opposite = 4 m. sin θ?\n* [[0.80->InterviewPass]]\n* [[1.60->WrongQ3]]\n* [[1.25->WrongQ3]]\n* [[3.00->WrongQ3]]"
+                },
+                {
+                    "name": "WrongQ3",
+                    "tags": [],
+                    "pid": "13",
+                    "text": "sin θ = 4 / 5 = 0.8.\n[[Retry->Q3]]"
+                },
+                {
+                    "name": "InterviewPass",
+                    "tags": [],
+                    "pid": "14",
+                    "text": "(set:$playerLevel to \"Assistant\")(set:$credit to (min:200,$credit+50))\n***Promoted to Assistant (+50 credit).***\n[[Proceed to Bootcamp->BootcampWelcome]]"
+                },
+                {
+                    "name": "BootcampWelcome",
+                    "tags": [],
+                    "pid": "15",
+                    "text": "(set:$hourLeft to 60)  /* reset timer if returning */\nWelcome to the **Tidal‑Model Bootcamp**.\n(link:\"Bootcamp rules\")[Earn **+20** credit first correct pick per parameter; wrong guess costs **5**. Reach **100** credit → Scientist, **150** credit → Leading Scientist.](hide:(link-replace:\"Bootcamp rules\"))\n[[Start work->BootcampIntro]]"
+                },
+                {
+                    "name": "BootcampIntro",
+                    "tags": [],
+                    "pid": "16",
+                    "text": "(set:$midDone to (isset:$midDone)?$midDone:false)\n(set:$ampDone to (isset:$ampDone)?$ampDone:false)\n(set:$perDone to (isset:$perDone)?$perDone:false)\nChoose parameter to recover:\n(if: not $midDone)[* [[Midline->ParamMid]]]\n(if: not $ampDone)[* [[Amplitude->ParamAmp]]]\n(if: not $perDone)[* [[Period->ParamPer]]]\n(elseif:)[[[Evaluate->BootcampEval]]]"
+                },
+                {
+                    "name": "ParamMid",
+                    "tags": [],
+                    "pid": "17",
+                    "text": "<img src=\"https://i.imgur.com/8lXxP4I.png\" alt=\"midline diagram\" style=\"max-width:500px;\">\nMidline value?\n* [[-8->MidRight]]\n* [[-18->MidWrong]]\n* [[14->MidWrong]]\n* [[2->MidWrong]]"
+                },
+                {
+                    "name": "MidRight",
+                    "tags": [],
+                    "pid": "18",
+                    "text": "(set:$credit to (min:200,$credit+20))(set:$midDone to true)\nMidline correct (+20).\n[[Back->BootcampIntro]]"
+                },
+                {
+                    "name": "MidWrong",
+                    "tags": [],
+                    "pid": "19",
+                    "text": "(set:$credit to (max:0,$credit-5))\n−5 credit: midline is halfway between peaks & troughs.\n[[Retry->ParamMid]]"
+                },
+                {
+                    "name": "ParamAmp",
+                    "tags": [],
+                    "pid": "20",
+                    "text": "<img src=\"https://i.imgur.com/NcO15qR.png\" style=\"max-width:500px;\">\nAmplitude?\n* [[10->AmpRight]]\n* [[-8->AmpWrong]]\n* [[18->AmpWrong]]\n* [[6->AmpWrong]]"
+                },
+                {
+                    "name": "AmpRight",
+                    "tags": [],
+                    "pid": "21",
+                    "text": "(set:$credit to (min:200,$credit+20))(set:$ampDone to true)\nAmplitude correct (+20).\n[[Back->BootcampIntro]]"
+                },
+                {
+                    "name": "AmpWrong",
+                    "tags": [],
+                    "pid": "22",
+                    "text": "(set:$credit to (max:0,$credit-5))\n−5 credit.\n[[Retry->ParamAmp]]"
+                },
+                {
+                    "name": "ParamPer",
+                    "tags": [],
+                    "pid": "23",
+                    "text": "<img src=\"https://i.imgur.com/6rljzBX.png\" style=\"max-width:500px;\">\nPeriod?\n* [[16->PerRight]]\n* [[6.28->PerWrong]]\n* [[0.39->PerWrong]]\n* [[10->PerWrong]]"
+                },
+                {
+                    "name": "PerRight",
+                    "tags": [],
+                    "pid": "24",
+                    "text": "(set:$credit to (min:200,$credit+20))(set:$perDone to true)\nPeriod correct (+20).\n[[Back->BootcampIntro]]"
+                },
+                {
+                    "name": "PerWrong",
+                    "tags": [],
+                    "pid": "25",
+                    "text": "(set:$credit to (max:0,$credit-5))\n−5 credit.\n[[Retry->ParamPer]]"
+                },
+                {
+                    "name": "BootcampEval",
+                    "tags": [],
+                    "pid": "26",
+                    "text": "(if:$credit >= 150)[(set:$playerLevel to \"Leading Scientist\")Promotion → Leading Scientist! [[Enter Lab->LabStart]]]\n(elseif:$credit >= 100)[(set:$playerLevel to \"Scientist\")Promotion to Scientist! [[Enter Lab->LabStart]]]\n(else:)[Credit < 100: you'll work with a borrowed model.\n[[Go to War Room->WarRoom]]]"
+                },
+                {
+                    "name": "LabStart",
+                    "tags": [],
+                    "pid": "27",
+                    "text": "(unset:$Aok)(unset:$Bok)(unset:$Cok)(unset:$Dok)\nA 60‑hour countdown begins **now**.\n(live:60s)[(set:$hourLeft to it-1)(if:$hourLeft <=0)[(goto:\"BootcampWelcome\")]]\n* [[Jamie's lighthouse logs (-4 h)->DataJamie]]\n* [[Real‑time buoy feed (-2 h)->DataBuoy]]"
+                },
+                {
+                    "name": "DataJamie",
+                    "tags": [],
+                    "pid": "28",
+                    "text": "(set:$hourLeft to $hourLeft-4)\nJamie hiked cliffs nightly, noting tide peaks every 5.8 h.\n[[Chart->LabChart]]"
+                },
+                {
+                    "name": "DataBuoy",
+                    "tags": [],
+                    "pid": "29",
+                    "text": "(set:$hourLeft to $hourLeft-2)\nBuoy sensors transmit heights every 30 min.\n[[Chart->LabChart]]"
+                },
+                {
+                    "name": "LabChart",
+                    "tags": [],
+                    "pid": "30",
+                    "text": "(dropdown: bind $A,\"select\",\"5.0\",\"4.8\",\"1.0\")\n(dropdown: bind $B,\"select\",\"11/14\",\"π/4\",\"22/7\")\n(dropdown: bind $C,\"select\",\"6.0\",\"5.8\",\"4.9\")\n(dropdown: bind $D,\"select\",\"10\",\"11\",\"9\",\"12\")\n(if:$A isnot \"select\" and $B isnot \"select\" and $C isnot \"select\" and $D isnot \"select\")[[Submit->ModelEval]]"
+                },
+                {
+                    "name": "ModelEval",
+                    "tags": [],
+                    "pid": "31",
+                    "text": "(set:$correct to 0)\n(if:$A is \"5.0\" or $A is \"4.8\")[(set:$correct to $correct+1)]\n(if:$B is \"11/14\" or $B is \"π/4\")[(set:$correct to $correct+1)]\n(if:$C is \"6.0\" or $C is \"5.8\")[(set:$correct to $correct+1)]\n(if:$D is \"10\" or $D is \"11\" or $D is \"9\")[(set:$correct to $correct+1)]\nYou scored $correct /4.\n(if:$correct is 4)[[[WarRoom->WarRoom]]]\n(elseif:$correct is 3)[[[Refine (no penalty)->LabChart]]]\n(elseif:$correct is 2)[(set:$credit to (max:0,$credit-10))[[Retry (-10)->LabChart]]]\n(elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))[[Retry (-20)->LabChart]]]\n(else:)[(set:$credit to (max:0,$credit-50))[[Retry (-50)->LabChart]]]\n(if:$credit < 20)[(set:$playerLevel:\"Assistant\")(goto:\"BootcampWelcome\")]"
+                },
+                {
+                    "name": "WarRoom",
+                    "tags": [],
+                    "pid": "32",
+                    "text": "Fortify the dam?\n* [[Fortify->FortYes]]\n* [[Risk it->FortNo]]"
+                },
+                {
+                    "name": "FortYes",
+                    "tags": [],
+                    "pid": "33",
+                    "text": "(set:$isDamFortified to true)\n[[Outcome->Outcome]]"
+                },
+                {
+                    "name": "FortNo",
+                    "tags": [],
+                    "pid": "34",
+                    "text": "(set:$isDamFortified to false)\n[[Outcome->Outcome]]"
+                },
+                {
+                    "name": "Outcome",
+                    "tags": [],
+                    "pid": "35",
+                    "text": "(set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))\n(if:$isDamFortified)[[[EndProtected->EndProtected]]]\n(elseif:$overflow)[[[EndFlooded->EndFlooded]]]\n(else:)[[[EndProtected->EndProtected]]]"
+                },
+                {
+                    "name": "EndProtected",
+                    "tags": [],
+                    "pid": "36",
+                    "text": "Town safe!\n[[Restart->Start]]"
+                },
+                {
+                    "name": "EndFlooded",
+                    "tags": [],
+                    "pid": "37",
+                    "text": "Floodwaters breach the unfortified dam.\n[[Restart->Start]]"
+                }
+            ]
+        };
+    </script>
+    <style id="twine-user-stylesheet" type="text/twine-css">
+    </style>
+    <style id="twine-stylesheet" type="text/twine-css">
+    </style>
+</head>
+<body>
+    <tw-story></tw-story>
+    <tw-storydata name="Tide of Truth" startnode="1" creator="Twine" creator-version="2.5.1" ifid="AD94A97D-569E-40FA-9CF4-E7CE4A663A35" zoom="1" format="Harlowe" format-version="3.3.3" options="" hidden>
+        <style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style>
+        <script role="script" id="twine-user-script" type="text/twine-javascript"></script>
+        <tw-passagedata pid="0" name="StoryBanner" tags="header" position="500,0" size="100,100">''Level:'' $playerLevel | ''Credit:'' $credit (if:$hourLeft &lt; 60)[| ''Hours left:'' $hourLeft]</tw-passagedata>
+        <tw-passagedata pid="1" name="Start" tags="" position="500,100" size="100,100">(set:$playerName to &quot;&quot;)
+(set:$playerLevel to &quot;Beginner&quot;)
+(set:$credit to 0)
+(set:$hourLeft to 60)
+(set:$isDamFortified to false)
+(set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))
+Welcome to *Tide of Truth*.
+What&#x27;s your name?
+|(input-box: bind $playerName)[Enter]-&gt;[[Intro]]</tw-passagedata>
+        <tw-passagedata pid="2" name="StoryFooter" tags="footer" position="500,200" size="100,100">(link:&quot;Save game now&quot;)[ (save-game:&quot;slot1&quot;) ]</tw-passagedata>
+        <tw-passagedata pid="3" name="Intro" tags="" position="500,300" size="100,100">You&#x27;re $playerName, eager to prove your math can save lives.
+* [[Begin-&gt;Backstory1]]
+* [[Take a moment-&gt;WaitBreath]]</tw-passagedata>
+        <tw-passagedata pid="4" name="WaitBreath" tags="" position="500,400" size="100,100">You breathe the salty air on Stormhaven&#x27;s pier, steadying your nerves.
+[[Ready-&gt;Backstory1]]</tw-passagedata>
+        <tw-passagedata pid="5" name="Backstory1" tags="" position="500,500" size="100,100">Stormhaven is proud but vulnerable, no stranger to hurricanes.
+[[Continue-&gt;Backstory2]]</tw-passagedata>
+        <tw-passagedata pid="6" name="Backstory2" tags="" position="500,600" size="100,100">Hurricane *Calypso* brews offshore. Your tide‑model expertise could protect thousands—after you earn a task‑force spot.
+[[Request an interview-&gt;InterviewIntro]]</tw-passagedata>
+        <tw-passagedata pid="7" name="InterviewIntro" tags="" position="500,700" size="100,100">The council schedules a quick skills quiz.
+[[Begin quiz-&gt;Q1]]</tw-passagedata>
+        <tw-passagedata pid="8" name="Q1" tags="" position="500,800" size="100,100">Hypotenuse with legs 7 km &amp; 24 km?
+* [[14 km-&gt;WrongQ1]]
+* [[17 km-&gt;WrongQ1]]
+* [[25 km-&gt;Q2]]
+* [[31 km-&gt;WrongQ1]]</tw-passagedata>
+        <tw-passagedata pid="9" name="WrongQ1" tags="" position="500,900" size="100,100">Not quite—remember the 7‑24‑25 triple.
+(link:&quot;Video help&quot;)[(open-url:&quot;https://youtu.be/77XAdyWz5SM&quot;)]
+[[Retry-&gt;Q1]]</tw-passagedata>
+        <tw-passagedata pid="10" name="Q2" tags="" position="500,1000" size="100,100">If sin θ = 3/4 and opposite = 9 m, hypotenuse?
+* [[12 m-&gt;Q3]]
+* [[7.5 m-&gt;WrongQ2]]
+* [[6 m-&gt;WrongQ2]]
+* [[3 m-&gt;WrongQ2]]</tw-passagedata>
+        <tw-passagedata pid="11" name="WrongQ2" tags="" position="500,1100" size="100,100">Hint: hyp = 9 / 0.75.
+(link:&quot;Video&quot;)[(open-url:&quot;https://youtu.be/77XAdyWz5SM&quot;)]
+[[Retry-&gt;Q2]]</tw-passagedata>
+        <tw-passagedata pid="12" name="Q3" tags="" position="500,1200" size="100,100">Hypotenuse = 5 m, opposite = 4 m. sin θ?
+* [[0.80-&gt;InterviewPass]]
+* [[1.60-&gt;WrongQ3]]
+* [[1.25-&gt;WrongQ3]]
+* [[3.00-&gt;WrongQ3]]</tw-passagedata>
+        <tw-passagedata pid="13" name="WrongQ3" tags="" position="500,1300" size="100,100">sin θ = 4 / 5 = 0.8.
+[[Retry-&gt;Q3]]</tw-passagedata>
+        <tw-passagedata pid="14" name="InterviewPass" tags="" position="500,1400" size="100,100">(set:$playerLevel to &quot;Assistant&quot;)(set:$credit to (min:200,$credit+50))
+***Promoted to Assistant (+50 credit).***
+[[Proceed to Bootcamp-&gt;BootcampWelcome]]</tw-passagedata>
+        <tw-passagedata pid="15" name="BootcampWelcome" tags="" position="500,1500" size="100,100">(set:$hourLeft to 60)  /* reset timer if returning */
+Welcome to the **Tidal‑Model Bootcamp**.
+(link:&quot;Bootcamp rules&quot;)[Earn **+20** credit first correct pick per parameter; wrong guess costs **5**. Reach **100** credit → Scientist, **150** credit → Leading Scientist.](hide:(link-replace:&quot;Bootcamp rules&quot;))
+[[Start work-&gt;BootcampIntro]]</tw-passagedata>
+        <tw-passagedata pid="16" name="BootcampIntro" tags="" position="500,1600" size="100,100">(set:$midDone to (isset:$midDone)?$midDone:false)
+(set:$ampDone to (isset:$ampDone)?$ampDone:false)
+(set:$perDone to (isset:$perDone)?$perDone:false)
+Choose parameter to recover:
+(if: not $midDone)[* [[Midline-&gt;ParamMid]]]
+(if: not $ampDone)[* [[Amplitude-&gt;ParamAmp]]]
+(if: not $perDone)[* [[Period-&gt;ParamPer]]]
+(elseif:)[[[Evaluate-&gt;BootcampEval]]]</tw-passagedata>
+        <tw-passagedata pid="17" name="ParamMid" tags="" position="500,1700" size="100,100">&lt;img src=&quot;https://i.imgur.com/8lXxP4I.png&quot; alt=&quot;midline diagram&quot; style=&quot;max-width:500px;&quot;&gt;
+Midline value?
+* [[-8-&gt;MidRight]]
+* [[-18-&gt;MidWrong]]
+* [[14-&gt;MidWrong]]
+* [[2-&gt;MidWrong]]</tw-passagedata>
+        <tw-passagedata pid="18" name="MidRight" tags="" position="500,1800" size="100,100">(set:$credit to (min:200,$credit+20))(set:$midDone to true)
+Midline correct (+20).
+[[Back-&gt;BootcampIntro]]</tw-passagedata>
+        <tw-passagedata pid="19" name="MidWrong" tags="" position="500,1900" size="100,100">(set:$credit to (max:0,$credit-5))
+−5 credit: midline is halfway between peaks &amp; troughs.
+[[Retry-&gt;ParamMid]]</tw-passagedata>
+        <tw-passagedata pid="20" name="ParamAmp" tags="" position="500,2000" size="100,100">&lt;img src=&quot;https://i.imgur.com/NcO15qR.png&quot; style=&quot;max-width:500px;&quot;&gt;
+Amplitude?
+* [[10-&gt;AmpRight]]
+* [[-8-&gt;AmpWrong]]
+* [[18-&gt;AmpWrong]]
+* [[6-&gt;AmpWrong]]</tw-passagedata>
+        <tw-passagedata pid="21" name="AmpRight" tags="" position="500,2100" size="100,100">(set:$credit to (min:200,$credit+20))(set:$ampDone to true)
+Amplitude correct (+20).
+[[Back-&gt;BootcampIntro]]</tw-passagedata>
+        <tw-passagedata pid="22" name="AmpWrong" tags="" position="500,2200" size="100,100">(set:$credit to (max:0,$credit-5))
+−5 credit.
+[[Retry-&gt;ParamAmp]]</tw-passagedata>
+        <tw-passagedata pid="23" name="ParamPer" tags="" position="500,2300" size="100,100">&lt;img src=&quot;https://i.imgur.com/6rljzBX.png&quot; style=&quot;max-width:500px;&quot;&gt;
+Period?
+* [[16-&gt;PerRight]]
+* [[6.28-&gt;PerWrong]]
+* [[0.39-&gt;PerWrong]]
+* [[10-&gt;PerWrong]]</tw-passagedata>
+        <tw-passagedata pid="24" name="PerRight" tags="" position="500,2400" size="100,100">(set:$credit to (min:200,$credit+20))(set:$perDone to true)
+Period correct (+20).
+[[Back-&gt;BootcampIntro]]</tw-passagedata>
+        <tw-passagedata pid="25" name="PerWrong" tags="" position="500,2500" size="100,100">(set:$credit to (max:0,$credit-5))
+−5 credit.
+[[Retry-&gt;ParamPer]]</tw-passagedata>
+        <tw-passagedata pid="26" name="BootcampEval" tags="" position="500,2600" size="100,100">(if:$credit &gt;= 150)[(set:$playerLevel to &quot;Leading Scientist&quot;)Promotion → Leading Scientist! [[Enter Lab-&gt;LabStart]]]
+(elseif:$credit &gt;= 100)[(set:$playerLevel to &quot;Scientist&quot;)Promotion to Scientist! [[Enter Lab-&gt;LabStart]]]
+(else:)[Credit &lt; 100: you&#x27;ll work with a borrowed model.
+[[Go to War Room-&gt;WarRoom]]]</tw-passagedata>
+        <tw-passagedata pid="27" name="LabStart" tags="" position="500,2700" size="100,100">(unset:$Aok)(unset:$Bok)(unset:$Cok)(unset:$Dok)
+A 60‑hour countdown begins **now**.
+(live:60s)[(set:$hourLeft to it-1)(if:$hourLeft &lt;=0)[(goto:&quot;BootcampWelcome&quot;)]]
+* [[Jamie&#x27;s lighthouse logs (-4 h)-&gt;DataJamie]]
+* [[Real‑time buoy feed (-2 h)-&gt;DataBuoy]]</tw-passagedata>
+        <tw-passagedata pid="28" name="DataJamie" tags="" position="500,2800" size="100,100">(set:$hourLeft to $hourLeft-4)
+Jamie hiked cliffs nightly, noting tide peaks every 5.8 h.
+[[Chart-&gt;LabChart]]</tw-passagedata>
+        <tw-passagedata pid="29" name="DataBuoy" tags="" position="500,2900" size="100,100">(set:$hourLeft to $hourLeft-2)
+Buoy sensors transmit heights every 30 min.
+[[Chart-&gt;LabChart]]</tw-passagedata>
+        <tw-passagedata pid="30" name="LabChart" tags="" position="500,3000" size="100,100">(dropdown: bind $A,&quot;select&quot;,&quot;5.0&quot;,&quot;4.8&quot;,&quot;1.0&quot;)
+(dropdown: bind $B,&quot;select&quot;,&quot;11/14&quot;,&quot;π/4&quot;,&quot;22/7&quot;)
+(dropdown: bind $C,&quot;select&quot;,&quot;6.0&quot;,&quot;5.8&quot;,&quot;4.9&quot;)
+(dropdown: bind $D,&quot;select&quot;,&quot;10&quot;,&quot;11&quot;,&quot;9
