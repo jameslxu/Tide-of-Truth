@@ -1,228 +1,223 @@
+:: StoryBanner
+''Level:'' $playerLevel | ''Credit:'' $credit (if: $hourLeft < 60)[| ''Hours left:'' $hourLeft]
+
+:: StoryFooter
+(link: "Save game now")[ (save-game:"slot1") ]
+
 :: Start
 (set: $playerName to "")
 (set: $playerLevel to "Beginner")
 (set: $credit to 0)
-(set: $hourLeft to 60)   /* 60‑hour lab timer */
+(set: $hourLeft to 60)
 (set: $isDamFortified to false)
-(set: $landfallTime to (either: 0,1,2,3,4,5,6,7,8,9))
-|modal>[ ]  /* hidden modal hook */
+(set: $landfallTime to (either:0,1,2,3,4,5,6,7,8,9))
 Welcome to *Tide of Truth*.
-What's your name?
-|(input-box: bind $playerName)[Submit]->[[Intro]]
-
-:: modal[hidden]
-{REPLACE‑ME}
+What’s your name?
+|(input-box: bind $playerName)[Enter]->[[Intro]]
 
 :: Intro
-''Name:'' $playerName | ''Level:'' $playerLevel | ''Credit:'' $credit
 You’re $playerName, fresh out of school, eager to prove your math can save lives.
 * [[Begin->Backstory1]]
 * [[Take a moment->WaitBreath]]
 
 :: WaitBreath
-You take a deep breath on the pier, waves slapping the pylons below. The salty air and distant gulls remind you what you’re fighting to protect.
-
-[[Ready to continue->Backstory1]]
+You stand on the pier; salty wind and distant gulls steady your nerves.
+[[Ready->Backstory1]]
 
 :: Backstory1
-''Name:'' $playerName | ''Level:'' $playerLevel | ''Credit:'' $credit
-<img src="https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg" style="max-width:600px;">
 Stormhaven is a proud but vulnerable coastal town, no stranger to hurricanes.
 [[Continue->Backstory2]]
 
 :: Backstory2
-''Name:'' $playerName | ''Level:'' $playerLevel | ''Credit:'' $credit
-<img src="https://cdn.pixabay.com/photo/2016/08/24/08/39/man-at-sea-1616458_1280.jpg" style="max-width:600px;">
 Hurricane *Calypso* brews offshore. Your tidal‑model expertise could protect thousands—after you earn a spot on the task‑force.
 [[Request an interview->InterviewIntro]]
 
 :: InterviewIntro
-<img src="https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg">
 The council schedules a quick skills quiz.
-[[Begin interview->Q1]]
+[[Begin quiz->Q1]]
 
 :: Q1
-What is the hypotenuse of a right triangle with legs 7 km and 24 km?
-* [[14 km->WrongQ1]]
-* [[17 km->WrongQ1]]
-* [[25 km->Q2]]
-* [[31 km->WrongQ1]]
+Hypotenuse with legs 7 km & 24 km?
+* [[14 km->WrongQ1]]
+* [[17 km->WrongQ1]]
+* [[25 km->Q2]]
+* [[31 km->WrongQ1]]
 
 :: WrongQ1
-(append: ?modal)[Not quite—remember the 7‑24‑25 Pythagorean triple!] (show: ?modal)
-(link: "Watch help video")[ (open-url: "https://youtu.be/77XAdyWz5SM") ]
+Not quite — remember the 7‑24‑25 triple.
+(link: "Watch help video")[ (open-url:"https://youtu.be/77XAdyWz5SM") ]
 [[Retry->Q1]]
 
 :: Q2
-Given sin(θ)=3/4 and opposite = 9 m, what is the hypotenuse?
-* [[12 m->Q3]]
-* [[7.5 m->WrongQ2]]
-* [[6 m->WrongQ2]]
-* [[3 m->WrongQ2]]
+If sin θ = 3/4 and opposite = 9 m, hypotenuse?
+* [[12 m->Q3]]
+* [[7.5 m->WrongQ2]]
+* [[6 m->WrongQ2]]
+* [[3 m->WrongQ2]]
 
 :: WrongQ2
-(append: ?modal)[Close—opposite/hyp = 3/4 so hyp = 9 ÷ (3/4).] (show: ?modal)
-(link: "Watch help video")[ (open-url: "https://youtu.be/77XAdyWz5SM") ]
+Hint: hyp = 9 / 0.75.
+(link: "Video")[(open-url:"https://youtu.be/77XAdyWz5SM")]
 [[Retry->Q2]]
 
 :: Q3
-Hypotenuse = 5 m, opposite = 4 m. What is sin θ?
+Hypotenuse = 5 m, opposite = 4 m. sin θ?
 * [[0.80->InterviewPass]]
 * [[1.60->WrongQ3]]
 * [[1.25->WrongQ3]]
 * [[3.00->WrongQ3]]
 
 :: WrongQ3
-(append: ?modal)[Sin θ = opp/hyp so 4 ÷ 5 = 0.8.] (show: ?modal)
-(link: "Watch help video")[ (open-url: "https://youtu.be/77XAdyWz5SM") ]
+sin θ = 4 / 5 = 0.8.
 [[Retry->Q3]]
 
 :: InterviewPass
-(set: $playerLevel to "Assistant")(set: $credit to it+50)
-(append: ?modal)[Congrats — You’re now **Assistant** scientist! (+50 credit)] (show: ?modal)
-''Name:'' $playerName | ''Level:'' $playerLevel | ''Credit:'' $credit
+(set:$playerLevel to "Assistant")(set:$credit to it+50)
+***You are now Assistant scientist (+50 credit).***
 [[Proceed to Bootcamp->BootcampWelcome]]
 
 :: BootcampWelcome
 Welcome to the **Tidal‑Model Bootcamp**.
-(link: "Bootcamp rules")[ (append: ?modal)[Earn **+20** credit on the first correct guess of each parameter.<br>Wrong guesses: **−5** credit.<br>You must reach **100 credit** to get promoted to Scientist.<br>Each parameter link disappears once solved.] (show: ?modal) ]
+(link: "Bootcamp rules")[ 
+(set:$rulesRead to true)
+Earn **+20** credit the first time you get a parameter right. Wrong guesses cost **5**. Reach **100** credit to earn Scientist rank. 
+]
 [[Start work->BootcampIntro]]
 
 :: BootcampIntro
-''Credit:'' $credit
-(set: $midDone to false)(set: $ampDone to false)(set: $perDone to false)
-Choose which parameter to recover:
-(if: not $midDone)[* [[Midline->ParameterMidline]]]
-(if: not $ampDone)[* [[Amplitude->ParameterAmplitude]]]
-(if: not $perDone)[* [[Period->ParameterPeriod]]]
-(else:)[[[Evaluate Bootcamp->BootcampEvaluate]]]
+(if: (not:$rulesRead))[← Click “Bootcamp rules” above before you start.]
+Choose a parameter to recover:
+(set:$midDone to (isset:$midDone)?$midDone:false)
+(set:$ampDone to (isset:$ampDone)?$ampDone:false)
+(set:$perDone to (isset:$perDone)?$perDone:false)
+(if: not $midDone)[* [[Midline->ParamMid]]]
+(if: not $ampDone)[* [[Amplitude->ParamAmp]]]
+(if: not $perDone)[* [[Period->ParamPer]]]
+(elseif:)[[[Evaluate->BootcampEval]]]
 
-:: ParameterMidline
-<img src="https://photos.app.goo.gl/T88zoeeEfWzAuRJE6">
+:: ParamMid
+<img src="https://i.imgur.com/eqMidline.png" alt="midline diagram">
 Midline value?
-* [[-8->CorrectMidline]]
-* [[-18->WrongMid]]
-* [[14->WrongMid]]
-* [[2->WrongMid]]
+* [[-8->MidRight]]
+* [[-18->MidWrong]]
+* [[14->MidWrong]]
+* [[2->MidWrong]]
 
-:: CorrectMidline
-(set: $credit to it+20)(set: $midDone to true)
-(append: ?modal)[Correct — Midline −8 (+20)] (show: ?modal)
-[[Back to Bootcamp->BootcampIntro]]
+:: MidRight
+(set:$credit to it+20)(set:$midDone to true)
+Midline correct (‑8). +20 credit.
+[[Back->BootcampIntro]]
 
-:: WrongMid
-(set: $credit to it-5)
-(append: ?modal)[Not quite (−5). Midline is halfway between peaks & troughs.] (show: ?modal)
-[[Retry midline->ParameterMidline]]
+:: MidWrong
+(set:$credit to it-5)
+Minus 5 credit — midpoint between crest and trough.
+[[Try again->ParamMid]]
 
-:: ParameterAmplitude
-<img src="https://photos.app.goo.gl/T88zoeeEfWzAuRJE6">
+:: ParamAmp
+<img src="https://i.imgur.com/eqAmplitude.png">
 Amplitude?
-* [[10->CorrectAmp]]
-* [[-8->WrongAmp]]
-* [[18->WrongAmp]]
-* [[6->WrongAmp]]
+* [[10->AmpRight]]
+* [[-8->AmpWrong]]
+* [[18->AmpWrong]]
+* [[6->AmpWrong]]
 
-:: CorrectAmp
-(set: $credit to it+20)(set: $ampDone to true)
-(append: ?modal)[Amplitude 10 (+20)] (show: ?modal)
+:: AmpRight
+(set:$credit to it+20)(set:$ampDone to true)
+Amplitude correct (+20).
 [[Back->BootcampIntro]]
 
-:: WrongAmp
-(set: $credit to it-5)
-(append: ?modal)[Try again — amplitude is peak distance above midline.] (show: ?modal)
-[[Retry amplitude->ParameterAmplitude]]
+:: AmpWrong
+(set:$credit to it-5)
+Amplitude is height above mid‑line (−5).
+[[Retry->ParamAmp]]
 
-:: ParameterPeriod
-<img src="https://photos.app.goo.gl/T88zoeeEfWzAuRJE6">
+:: ParamPer
+<img src="https://i.imgur.com/eqPeriod.png">
 Period?
-* [[16->CorrectPer]]
-* [[2π->WrongPer]]
-* [[π/8->WrongPer]]
-* [[10->WrongPer]]
+* [[16->PerRight]]
+* [[6.28->PerWrong]]
+* [[0.39->PerWrong]]
+* [[10->PerWrong]]
 
-:: CorrectPer
-(set: $credit to it+20)(set: $perDone to true)
-(append: ?modal)[Period 16 h (+20)] (show: ?modal)
+:: PerRight
+(set:$credit to it+20)(set:$perDone to true)
+Period correct (+20).
 [[Back->BootcampIntro]]
 
-:: WrongPer
-(set: $credit to it-5)
-(append: ?modal)[Remember: period = one full cycle width.] (show: ?modal)
-[[Retry period->ParameterPeriod]]
+:: PerWrong
+(set:$credit to it-5)
+Period = width of one cycle (−5).
+[[Retry->ParamPer]]
 
-:: BootcampEvaluate
-(if: $credit >= 100)[(set: $playerLevel to "Scientist")(append: ?modal)[Promotion — **Scientist** rank unlocked!] (show: ?modal) [[Enter Lab->LabStart]]]
-(else:)[Not enough credit. [[Continue using borrowed model->WarRoom]]]
+:: BootcampEval
+(if:$credit>=100)[(set:$playerLevel to "Scientist")You’re promoted to Scientist!
+[[Enter the lab->LabStart]]]
+(else:)[Not enough credit yet — proceed with borrowed model.
+[[Go to War Room->WarRoom]]]
 
 :: LabStart
-''Hours left:'' $hourLeft | ''Credit:'' $credit
-<img src="https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg">
-A 60‑hour countdown has begun. Every choice consumes time.
-Choose data source:
-* [[Jamie’s lighthouse logs (-4 h)->DataJamie]]
-* [[Real‑time buoy feed (-2 h)->DataBuoy]]
+A 60‑hour countdown has begun.
+[[Jamie’s lighthouse logs (-4 h)->DataJamie]]
+[[Real‑time buoy feed (-2 h)->DataBuoy]]
 
 :: DataJamie
-<img src="https://photos.app.goo.gl/WgqqXSyoQNhQrJjp7">
-(set: $hourLeft to it-4)
-Jamie hiked cliffs nightly for months, recording tide heights in an old ledger. The logs capture peak‑to‑peak times of roughly 5.8 h.
-[[Plot chart->LabChart]]
+(set:$hourLeft to it-4)
+Jamie’s logs record tide peaks roughly every 5.8 h.
+[[Chart->LabChart]]
 
 :: DataBuoy
-<img src="https://photos.app.goo.gl/WgqqXSyoQNhQrJjp7">
-(set: $hourLeft to it-2)
-NOAA buoy sensors stream height data live every 30 min.
-[[Plot chart->LabChart]]
+(set:$hourLeft to it-2)
+Buoy sensors stream heights every 30 min.
+[[Chart->LabChart]]
 
 :: LabChart
-''Hours left:'' $hourLeft
-<img src="https://photos.app.goo.gl/WgqqXSyoQNhQrJjp7">
-(set: $A to "?")(set: $B to "?")(set: $C to "?")(set: $D to "?")
-(dropdown: bind $A, "5.0","4.8","1.0")
-(dropdown: bind $B, "11/14","π/4","22/7")
-(dropdown: bind $C, "6.0","5.8","4.9")
-(dropdown: bind $D, "10","11","9","12")
-(if: $A is not "?" and $B is not "?" and $C is not "?" and $D is not "?")[[Submit coefficients->ModelEvaluate]]
+(dropdown: bind $A,"select","5.0","4.8","1.0")
+(dropdown: bind $B,"select","11/14","π/4","22/7")
+(dropdown: bind $C,"select","6.0","5.8","4.9")
+(dropdown: bind $D,"select","10","11","9","12")
+(if:$A isnot "select" and $B isnot "select" and $C isnot "select" and $D isnot "select")[[Submit->ModelEval]]
 
-:: ModelEvaluate
-(set: $correct to (if:$A is "5.0" or $A is "4.8")1 else 0 + (if:$B is "11/14" or $B is "π/4")1 else 0 +(if:$C is "6.0" or $C is "5.8")1 else 0 +(if:$D is "10" or $D is "11" or $D is "9")1 else 0)
-(append: ?modal)[You have $correct /4 correct.] (show: ?modal)
-(if: $correct is 4)[[[Proceed to War Room->WarRoom]]]
-(elseif: $correct is 3)[[[Refine chart (no penalty)->LabChart]]]
-(elseif: $correct is 2)[(set:$credit to it-10)[[[Retry (−10 credit)->LabChart]]]]
-(elseif: $correct is 1)[(set:$credit to it-20)[[[Retry (−20 credit)->LabChart]]]]
-(else:)[(set:$credit to it-50)[[[Retry (−50 credit)->LabChart]]]]
+:: ModelEval
+(set:$correct to 0)
+(if:$A is "5.0" or $A is "4.8")[(set:$correct to it+1)]
+(if:$B is "11/14" or $B is "π/4")[(set:$correct to it+1)]
+(if:$C is "6.0" or $C is "5.8")[(set:$correct to it+1)]
+(if:$D is "10" or $D is "11" or $D is "9")[(set:$correct to it+1)]
+You scored $correct /4.
+(if:$correct is 4)[[[Proceed to War Room->WarRoom]]]
+(elseif:$correct is 3)[[[Refine (no penalty)->LabChart]]]
+(elseif:$correct is 2)[(set:$credit to it-10)[[[Retry (-10)->LabChart]]]]
+(elseif:$correct is 1)[(set:$credit to it-20)[[[Retry (-20)->LabChart]]]]
+(else:)[(set:$credit to it-50)[[[Retry (-50)->LabChart]]]]
 
 :: WarRoom
-Council meeting. Fortify the town’s dam?
-* [[Yes, fortify->FortifyYes]]
-* [[No, risk it->FortifyNo]]
+Fortify Stormhaven’s dam?
+* [[Fortify->FortYes]]
+* [[Risk it->FortNo]]
 
-:: FortifyYes
-(set: $isDamFortified to true)
+:: FortYes
+(set:$isDamFortified to true)
 [[Outcome->Outcome]]
 
-:: FortifyNo
-(set: $isDamFortified to false)
+:: FortNo
+(set:$isDamFortified to false)
 [[Outcome->Outcome]]
 
 :: Outcome
-(set: $wave to (either: 3,4,5,6,7))
-(set: $waterLevel to $wave)
-(if: $isDamFortified and ($landfallTime >=1) and ($landfallTime <=8))[[Community Protected->EndProtected]]
-(elseif: (not:$isDamFortified) and ($landfallTime is 0 or $landfallTime is 9))[[Community Protected->EndProtected]]
-(elseif: $isDamFortified)[[Over-protected->EndOver]]
-(else:)[[Damaged by flooding->EndFlooded]]
+(set:$wave to (either:3,4,5,6,7))
+(if:$isDamFortified and $landfallTime>=1 and $landfallTime<=8)[[[EndProtected->EndProtected]]]
+(elseif:(not:$isDamFortified) and ($landfallTime is 0 or $landfallTime is 9))[[EndProtected->EndProtected]]
+(elseif:$isDamFortified)[[[EndOver->EndOver]]]
+(else:)[[[EndFlooded->EndFlooded]]]
 
 :: EndProtected
-**Stormhaven safe!**
-[[Play again->Start]]
+Town safe!
+[[Restart->Start]]
 
 :: EndOver
-**Dam fortified unnecessarily—budget wasted but town safe.**
-[[Play again->Start]]
+Budget wasted but town safe.
+[[Restart->Start]]
 
 :: EndFlooded
-**Water surges over the original dam—flooding occurs.**
-[[Play again->Start]]
+Community flooded.
+[[Restart->Start]]
