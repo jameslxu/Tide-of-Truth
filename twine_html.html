@@ -1,4 +1,36 @@
-<!DOCTYPE html>
+
+&quot;,&quot;12&quot;)
+(if:$A isnot &quot;select&quot; and $B isnot &quot;select&quot; and $C isnot &quot;select&quot; and $D isnot &quot;select&quot;)[[Submit-&gt;ModelEval]]</tw-passagedata>
+        <tw-passagedata pid="31" name="ModelEval" tags="" position="500,3100" size="100,100">(set:$correct to 0)
+(if:$A is &quot;5.0&quot; or $A is &quot;4.8&quot;)[(set:$correct to $correct+1)]
+(if:$B is &quot;11/14&quot; or $B is &quot;π/4&quot;)[(set:$correct to $correct+1)]
+(if:$C is &quot;6.0&quot; or $C is &quot;5.8&quot;)[(set:$correct to $correct+1)]
+(if:$D is &quot;10&quot; or $D is &quot;11&quot; or $D is &quot;9&quot;)[(set:$correct to $correct+1)]
+You scored $correct /4.
+(if:$correct is 4)[[[WarRoom-&gt;WarRoom]]]
+(elseif:$correct is 3)[[[Refine (no penalty)-&gt;LabChart]]]
+(elseif:$correct is 2)[(set:$credit to (max:0,$credit-10))[[Retry (-10)-&gt;LabChart]]]
+(elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))[[Retry (-20)-&gt;LabChart]]]
+(else:)[(set:$credit to (max:0,$credit-50))[[Retry (-50)-&gt;LabChart]]]
+(if:$credit &lt; 20)[(set:$playerLevel:&quot;Assistant&quot;)(goto:&quot;BootcampWelcome&quot;)]</tw-passagedata>
+        <tw-passagedata pid="32" name="WarRoom" tags="" position="500,3200" size="100,100">Fortify the dam?
+* [[Fortify-&gt;FortYes]]
+* [[Risk it-&gt;FortNo]]</tw-passagedata>
+        <tw-passagedata pid="33" name="FortYes" tags="" position="500,3300" size="100,100">(set:$isDamFortified to true)
+[[Outcome-&gt;Outcome]]</tw-passagedata>
+        <tw-passagedata pid="34" name="FortNo" tags="" position="500,3400" size="100,100">(set:$isDamFortified to false)
+[[Outcome-&gt;Outcome]]</tw-passagedata>
+        <tw-passagedata pid="35" name="Outcome" tags="" position="500,3500" size="100,100">(set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))
+(if:$isDamFortified)[[[EndProtected-&gt;EndProtected]]]
+(elseif:$overflow)[[[EndFlooded-&gt;EndFlooded]]]
+(else:)[[[EndProtected-&gt;EndProtected]]]</tw-passagedata>
+        <tw-passagedata pid="36" name="EndProtected" tags="" position="500,3600" size="100,100">Town safe!
+[[Restart-&gt;Start]]</tw-passagedata>
+        <tw-passagedata pid="37" name="EndFlooded" tags="" position="500,3700" size="100,100">Floodwaters breach the unfortified dam.
+[[Restart-&gt;Start]]</tw-passagedata>
+    </tw-storydata>
+</body>
+</html><!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -378,4 +410,5 @@ Buoy sensors transmit heights every 30 min.
         <tw-passagedata pid="30" name="LabChart" tags="" position="500,3000" size="100,100">(dropdown: bind $A,&quot;select&quot;,&quot;5.0&quot;,&quot;4.8&quot;,&quot;1.0&quot;)
 (dropdown: bind $B,&quot;select&quot;,&quot;11/14&quot;,&quot;π/4&quot;,&quot;22/7&quot;)
 (dropdown: bind $C,&quot;select&quot;,&quot;6.0&quot;,&quot;5.8&quot;,&quot;4.9&quot;)
-(dropdown: bind $D,&quot;select&quot;,&quot;10&quot;,&quot;11&quot;,&quot;9
+(dropdown: bind $D,&quot;select&quot;,&quot;10&quot;,&quot;11&quot;,&quot;9&quot;,&quot;12&quot;)
+(if:$A isnot &quot;select&quot; and $B isnot &quot;select&quot; and $C isnot &quot;select&quot; and $D isnot &quot;select&quot;)[[Submit-&gt;ModelEval]]
