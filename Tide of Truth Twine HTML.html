@@ -1,0 +1,457 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html>
+<head>
+    <title>Tide of Truth</title>
+    <style>
+        img { max-width: 500px; }
+        .header, .footer { margin: 10px 0; }
+    </style>
+</head>
+<body>
+<div id="header" class="header">
+    <span>Level: <span data-bind="$playerLevel"></span> | Credit: <span data-bind="$credit"></span></span>
+    <span data-if="$hourLeft < 60"> | Hours left: <span data-bind="$hourLeft"></span></span>
+    <br>
+</div>
+
+<div id="footer" class="footer">
+    <br>
+    <a href="#" onclick="(window.Twine.saveGame('slot1')); return false;">Save game now</a>
+</div>
+
+<div id="passages">
+    <div id="Start" class="passage">
+        <script>
+            window.Twine.set('$playerName', '');
+            window.Twine.set('$playerLevel', 'Beginner');
+            window.Twine.set('$credit', 0);
+            window.Twine.set('$hourLeft', 60);
+            window.Twine.set('$isDamFortified', false);
+            window.Twine.set('$landfallTime', Math.floor(Math.random() * 10));
+        </script>
+        Welcome to <b>Tide of Truth</b>.<br>
+        What’s your name?<br>
+        <input type="text" data-bind="$playerName">
+        <a href="#Intro">Enter</a>
+    </div>
+
+    <div id="Intro" class="passage">
+        You’re <span data-bind="$playerName"></span>, eager to prove your math can save lives.<br>
+        <ul>
+            <li><a href="#Backstory1">Begin</a></li>
+            <li><a href="#WaitBreath">Take a moment</a></li>
+        </ul>
+    </div>
+
+    <div id="WaitBreath" class="passage">
+        You breathe the salty air on Stormhaven’s pier, steadying your nerves.<br>
+        <a href="#Backstory1">Ready</a>
+    </div>
+
+    <div id="Backstory1" class="passage">
+        Stormhaven is proud but vulnerable, no stranger to hurricanes.<br>
+        <a href="#Backstory2">Continue</a>
+    </div>
+
+    <div id="Backstory2" class="passage">
+        Hurricane <b>Calypso</b> brews offshore. Your tide-model expertise could protect thousands—after you earn a task-force spot.<br>
+        <a href="#InterviewIntro">Request an interview</a>
+    </div>
+
+    <div id="InterviewIntro" class="passage">
+        The council schedules a quick skills quiz.<br>
+        <a href="#Q1">Begin quiz</a>
+    </div>
+
+    <div id="Q1" class="passage">
+        Hypotenuse with legs 7 km & 24 km?<br>
+        <ul>
+            <li><a href="#WrongQ1">14 km</a></li>
+            <li><a href="#WrongQ1">17 km</a></li>
+            <li><a href="#Q2">25 km</a></li>
+            <li><a href="#WrongQ1">31 km</a></li>
+        </ul>
+    </div>
+
+    <div id="WrongQ1" class="passage">
+        Not quite—remember the 7-24-25 triple.<br>
+        <a href="https://youtu.be/77XAdyWz5SM" target="_blank">Video help</a><br>
+        <a href="#Q1">Retry</a>
+    </div>
+
+    <div id="Q2" class="passage">
+        If sin θ = 3/4 and opposite = 9 m, hypotenuse?<br>
+        <ul>
+            <li><a href="#Q3">12 m</a></li>
+            <li><a href="#WrongQ2">7.5 m</a></li>
+            <li><a href="#WrongQ2">6 m</a></li>
+            <li><a href="#WrongQ2">3 m</a></li>
+        </ul>
+    </div>
+
+    <div id="WrongQ2" class="passage">
+        Hint: hyp = 9 / 0.75.<br>
+        <a href="https://youtu.be/77XAdyWz5SM" target="_blank">Video</a><br>
+        <a href="#Q2">Retry</a>
+    </div>
+
+    <div id="Q3" class="passage">
+        Hypotenuse = 5 m, opposite = 4 m. sin θ?<br>
+        <ul>
+            <li><a href="#InterviewPass">0.80</a></li>
+            <li><a href="#WrongQ3">1.60</a></li>
+            <li><a href="#WrongQ3">1.25</a></li>
+            <li><a href="#WrongQ3">3.00</a></li>
+        </ul>
+    </div>
+
+    <div id="WrongQ3" class="passage">
+        sin θ = 4 / 5 = 0.8.<br>
+        <a href="#Q3">Retry</a>
+    </div>
+
+    <div id="InterviewPass" class="passage">
+        <script>
+            window.Twine.set('$playerLevel', 'Assistant');
+            window.Twine.set('$credit', Math.min(200, window.Twine.get('$credit') + 50));
+        </script>
+        <b>Promoted to Assistant (+50 credit).</b><br>
+        <a href="#BootcampWelcome">Proceed to Bootcamp</a>
+    </div>
+
+    <div id="BootcampWelcome" class="passage">
+        <script>
+            window.Twine.set('$hourLeft', 60);
+        </script>
+        Welcome to the <b>Tidal-Model Bootcamp</b>.<br>
+        <a href="#" onclick="alert('Earn +20 credit first correct pick per parameter; wrong guess costs 5. Reach 100 credit → Scientist, 150 credit → Leading Scientist.'); this.style.display='none'; return false;">Bootcamp rules</a><br>
+        <a href="#BootcampIntro">Start work</a>
+    </div>
+
+    <div id="BootcampIntro" class="passage">
+        <script>
+            window.Twine.set('$midDone', window.Twine.get('$midDone') || false);
+            window.Twine.set('$ampDone', window.Twine.get('$ampDone') || false);
+            window.Twine.set('$perDone', window.Twine.get('$perDone') || false);
+        </script>
+        Choose parameter to recover:<br>
+        <ul>
+            <li data-if="!window.Twine.get('$midDone')"><a href="#ParamMid">Midline</a></li>
+            <li data-if="!window.Twine.get('$ampDone')"><a href="#ParamAmp">Amplitude</a></li>
+            <li data-if="!window.Twine.get('$perDone')"><a href="#ParamPer">Period</a></li>
+        </ul>
+        <span data-if="window.Twine.get('$midDone') && window.Twine.get('$ampDone') && window.Twine.get('$perDone')"><a href="#BootcampEval">Evaluate</a></span>
+    </div>
+
+    <div id="ParamMid" class="passage">
+        <img src="https://i.imgur.com/8lXxP4I.png" alt="midline diagram"><br>
+        Midline value?<br>
+        <ul>
+            <li><a href="#MidRight">-8</a></li>
+            <li><a href="#MidWrong">-18</a></li>
+            <li><a href="#MidWrong">14</a></li>
+            <li><a href="#MidWrong">2</a></li>
+        </ul>
+    </div>
+
+    <div id="MidRight" class="passage">
+        <script>
+            window.Twine.set('$credit', Math.min(200, window.Twine.get('$credit') + 20));
+            window.Twine.set('$midDone', true);
+        </script>
+        Midline correct (+20).<br>
+        <a href="#BootcampIntro">Back</a>
+    </div>
+
+    <div id="MidWrong" class="passage">
+        <script>
+            window.Twine.set('$credit', Math.max(0, window.Twine.get('$credit') - 5));
+        </script>
+        −5 credit: midline is halfway between peaks & troughs.<br>
+        <a href="#ParamMid">Retry</a>
+    </div>
+
+    <div id="ParamAmp" class="passage">
+        <img src="https://i.imgur.com/NcO15qR.png"><br>
+        Amplitude?<br>
+        <ul>
+            <li><a href="#AmpRight">10</a></li>
+            <li><a href="#AmpWrong">-8</a></li>
+            <li><a href="#AmpWrong">18</a></li>
+            <li><a href="#AmpWrong">6</a></li>
+        </ul>
+    </div>
+
+    <div id="AmpRight" class="passage">
+        <script>
+            window.Twine.set('$credit', Math.min(200, window.Twine.get('$credit') + 20));
+            window.Twine.set('$ampDone', true);
+        </script>
+        Amplitude correct (+20).<br>
+        <a href="#BootcampIntro">Back</a>
+    </div>
+
+    <div id="AmpWrong" class="passage">
+        <script>
+            window.Twine.set('$credit', Math.max(0, window.Twine.get('$credit') - 5));
+        </script>
+        −5 credit.<br>
+        <a href="#ParamAmp">Retry</a>
+    </div>
+
+    <div id="ParamPer" class="passage">
+        <img src="https://i.imgur.com/6rljzBX.png"><br>
+        Period?<br>
+        <ul>
+            <li><a href="#PerRight">16</a></li>
+            <li><a href="#PerWrong">6.28</a></li>
+            <li><a href="#PerWrong">0.39</a></li>
+            <li><a href="#PerWrong">10</a></li>
+        </ul>
+    </div>
+
+    <div id="PerRight" class="passage">
+        <script>
+            window.Twine.set('$credit', Math.min(200, window.Twine.get('$credit') + 20));
+            window.Twine.set('$perDone', true);
+        </script>
+        Period correct (+20).<br>
+        <a href="#BootcampIntro">Back</a>
+    </div>
+
+    <div id="PerWrong" class="passage">
+        <script>
+            window.Twine.set('$credit', Math.max(0, window.Twine.get('$credit') - 5));
+        </script>
+        −5 credit.<br>
+        <a href="#ParamPer">Retry</a>
+    </div>
+
+    <div id="BootcampEval" class="passage">
+        <script>
+            if (window.Twine.get('$credit') >= 150) {
+                window.Twine.set('$playerLevel', 'Leading Scientist');
+            } else if (window.Twine.get('$credit') >= 100) {
+                window.Twine.set('$playerLevel', 'Scientist');
+            }
+        </script>
+        <span data-if="window.Twine.get('$credit') >= 150">Promotion → Leading Scientist! <a href="#LabStart">Enter Lab</a></span>
+        <span data-if="window.Twine.get('$credit') >= 100 && window.Twine.get('$credit') < 150">Promotion to Scientist! <a href="#LabStart">Enter Lab</a></span>
+        <span data-if="window.Twine.get('$credit') < 100">Credit < 100: you’ll work with a borrowed model.<br><a href="#WarRoom">Go to War Room</a></span>
+    </div>
+
+    <div id="LabStart" class="passage">
+        <script>
+            window.Twine.unset('$Aok');
+            window.Twine.unset('$Bok');
+            window.Twine.unset('$Cok');
+            window.Twine.unset('$Dok');
+            setInterval(() => {
+                let hl = window.Twine.get('$hourLeft');
+                if (hl > 0) {
+                    window.Twine.set('$hourLeft', hl - 1);
+                } else {
+                    window.location.hash = '#BootcampWelcome';
+                }
+            }, 60000);
+        </script>
+        A 60-hour countdown begins <b>now</b>.<br>
+        <ul>
+            <li><a href="#DataJamie">Jamie’s lighthouse logs (-4 h)</a></li>
+            <li><a href="#DataBuoy">Real-time buoy feed (-2 h)</a></li>
+        </ul>
+    </div>
+
+    <div id="DataJamie" class="passage">
+        <script>
+            window.Twine.set('$hourLeft', window.Twine.get('$hourLeft') - 4);
+        </script>
+        Jamie hiked cliffs nightly, noting tide peaks every 5.8 h.<br>
+        <a href="#LabChart">Chart</a>
+    </div>
+
+    <div id="DataBuoy" class="passage">
+        <script>
+            window.Twine.set('$hourLeft', window.Twine.get('$hourLeft') - 2);
+        </script>
+        Buoy sensors transmit heights every 30 min.<br>
+        <a href="#LabChart">Chart</a>
+    </div>
+
+    <div id="LabChart" class="passage">
+        <select data-bind="$A">
+            <option value="select">select</option>
+            <option value="5.0">5.0</option>
+            <option value="4.8">4.8</option>
+            <option value="1.0">1.0</option>
+        </select><br>
+        <select data-bind="$B">
+            <option value="select">select</option>
+            <option value="11/14">11/14</option>
+            <option value="π/4">π/4</option>
+            <option value="22/7">22/7</option>
+        </select><br>
+        <select data-bind="$C">
+            <option value="select">select</option>
+            <option value="6.0">6.0</option>
+            <option value="5.8">5.8</option>
+            <option value="4.9">4.9</option>
+        </select><br>
+        <select data-bind="$D">
+            <option value="select">select</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="9">9</option>
+            <option value="12">12</option>
+        </select><br>
+        <span data-if="window.Twine.get('$A') !== 'select' && window.Twine.get('$B') !== 'select' && window.Twine.get('$C') !== 'select' && window.Twine.get('$D') !== 'select'"><a href="#ModelEval">Submit</a></span>
+    </div>
+
+    <div id="ModelEval" class="passage">
+        <script>
+            let correct = 0;
+            if (['5.0', '4.8'].includes(window.Twine.get('$A'))) correct++;
+            if (['11/14', 'π/4'].includes(window.Twine.get('$B'))) correct++;
+            if (['6.0', '5.8'].includes(window.Twine.get('$C'))) correct++;
+            if (['10', '11', '9'].includes(window.Twine.get('$D'))) correct++;
+            window.Twine.set('$correct', correct);
+            if (correct === 2) window.Twine.set('$credit', Math.max(0, window.Twine.get('$credit') - 10));
+            if (correct === 1) window.Twine.set('$credit', Math.max(0, window.Twine.get('$credit') - 20));
+            if (correct === 0) window.Twine.set('$credit', Math.max(0, window.Twine.get('$credit') - 50));
+            if (window.Twine.get('$credit') < 20) {
+                window.Twine.set('$playerLevel', 'Assistant');
+                window.location.hash = '#BootcampWelcome';
+            }
+        </script>
+        You scored <span data-bind="$correct"></span> /4.<br>
+        <span data-if="window.Twine.get('$correct') === 4"><a href="#WarRoom">WarRoom</a></span>
+        <span data-if="window.Twine.get('$correct') === 3"><a href="#LabChart">Refine (no penalty)</a></span>
+        <span data-if="window.Twine.get('$correct') === 2"><a href="#LabChart">Retry (-10)</a></span>
+        <span data-if="window.Twine.get('$correct') === 1"><a href="#LabChart">Retry (-20)</a></span>
+        <span data-if="window.Twine.get('$correct') === 0"><a href="#LabChart">Retry (-50)</a></span>
+    </div>
+
+    <div id="WarRoom" class="passage">
+        Fortify the dam?<br>
+        <ul>
+            <li><a href="#FortYes">Fortify</a></li>
+            <li><a href="#FortNo">Risk it</a></li>
+        </ul>
+    </div>
+
+    <div id="FortYes" class="passage">
+        <script>
+            window.Twine.set('$isDamFortified', true);
+        </script>
+        <a href="#Outcome">Outcome</a>
+    </div>
+
+    <div id="FortNo" class="passage">
+        <script>
+            window.Twine.set('$isDamFortified', false);
+        </script>
+        <a href="#Outcome">Outcome</a>
+    </div>
+
+    <div id="Outcome" class="passage">
+        <script>
+            window.Twine.set('$overflow', [true, true, true, true, true, true, true, true, false, false][Math.floor(Math.random() * 10)]);
+        </script>
+        <span data-if="window.Twine.get('$isDamFortified')"><a href="#EndProtected">EndProtected</a></span>
+        <span data-if="!window.Twine.get('$isDamFortified') && window.Twine.get('$overflow')"><a href="#EndFlooded">EndFlooded</a></span>
+        <span data-if="!window.Twine.get('$isDamFortified') && !window.Twine.get('$overflow')"><a href="#EndProtected">EndProtected</a></span>
+    </div>
+
+    <div id="EndProtected" class="passage">
+        Town safe!<br>
+        <a href="#Start">Restart</a>
+    </div>
+
+    <div id="EndFlooded" class="passage">
+        Floodwaters breach the unfortified dam.<br>
+        <a href="#Start">Restart</a>
+    </div>
+</div>
+
+<script>
+    window.Twine = {
+        state: {},
+        set: (key, value) => { window.Twine.state[key] = value; },
+        get: (key) => window.Twine.state[key],
+        unset: (key) => { delete window.Twine.state[key]; },
+        saveGame: (slot) => { localStorage.setItem(slot, JSON.stringify(window.Twine.state)); }
+    };
+
+    function updateBindings() {
+        document.querySelectorAll('[data-bind]').forEach(el => {
+            const key = el.getAttribute('data-bind');
+            if (el.tagName === 'INPUT') {
+                el.value = window.Twine.get(key) || '';
+                el.oninput = () => window.Twine.set(key, el.value);
+            } else if (el.tagName === 'SELECT') {
+                el.value = window.Twine.get(key) || 'select';
+                el.onchange = () => window.Twine.set(key, el.value);
+            } else {
+                el.textContent = window.Twine.get(key) || '';
+            }
+        });
+        document.querySelectorAll('[data-if]').forEach(el => {
+            const condition = el.getAttribute('data-if');
+            el.style.display = eval(condition) ? '' : 'none';
+        });
+    }
+
+    window.addEventListener('hashchange', () => {
+        document.querySelectorAll('.passage').forEach(p => p.style.display = 'none');
+        const id = window.location.hash.slice(1) || 'Start';
+        const passage = document.getElementById(id);
+        if (passage) passage.style.display = 'block';
+        updateBindings();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateBindings();
+        window.dispatchEvent(new Event('hashchange'));
+    });
+</script>
+</body>
+</html>
