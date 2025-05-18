@@ -1,58 +1,55 @@
 ```twine
 :: StoryBanner [header]
-<!-- Static header: game title + right‑aligned save button only -->
 ''Tide of Truth'' — //Predict the Waves, Protect the Town// (align:"right")[ (link:"💾 Save")[ (save-game:"slot1") ] ]
-(line-break:)
 
 :: StatusBar
-<!-- Reusable bar displayed after each passage updates its variables -->
-''Level:'' $playerLevel | ''Credit:'' $credit (if:$hourLeft < 60)[| ''Minutes left:'' $hourLeft]
-(line-break:)
+|bar>[ ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:($secLeft%60) < 10)['0'](print:($secLeft%60)) ] ]<br>
+
 
 :: StoryFooter [footer]
-<!-- empty for now -->
 
 :: Start
-(set:$playerName to (prompt:"Your Name: ","Jackie Chan"))
+(set:$playerName to (prompt:"Your Name:","Jackie"))
 (set:$playerLevel to "Beginner")
 (set:$credit to 0)
 (set:$hourLeft to 60)
+(set:$secLeft to 3600)  <!-- 60 min × 60 s -->
 (set:$midDone to false)(set:$ampDone to false)(set:$perDone to false)
 (set:$isDamFortified to false)
 (set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg" style="max-width:600px;">
-Welcome to *Tide of Truth*. 
+<img src="https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg" style="max-width:1000px;">
+Welcome to *Tide of Truth*.
 [[Enter->Intro]]
 
 :: Intro
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg">
+<img src="https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg" style="max-width:1000px;">
 You’re $playerName, eager to prove your math can save lives.
 * [[Begin->Backstory1]]
 * [[Take a moment->WaitBreath]]
 
 :: WaitBreath
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2018/12/20/08/07/western-gull-3885415_960_720.jpg">
+<img src="https://cdn.pixabay.com/photo/2018/12/20/08/07/western-gull-3885415_960_720.jpg" style="max-width:1000px;">
 You breathe the salty air on Stormhaven’s pier, steadying your nerves.
 [[Ready->Backstory1]]
 
 :: Backstory1
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg" style="max-width:600px;">
+<img src="https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg" style="max-width:1000px;">
 Stormhaven is proud but vulnerable, no stranger to hurricanes.
 [[Continue->Backstory2]]
 
 :: Backstory2
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2016/08/24/08/39/man-at-sea-1616458_1280.jpg" style="max-width:600px;">
+<img src="https://cdn.pixabay.com/photo/2016/08/24/08/39/man-at-sea-1616458_1280.jpg" style="max-width:1000px;">
 Hurricane *Calypso* brews offshore—your tide‑model skills could save thousands if you earn a task‑force badge.
 [[Request an interview->InterviewIntro]]
 
 :: InterviewIntro
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg" style="max-width:600px;">
+<img src="https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg" style="max-width:1000px;">
 The council posts a lightning‑round trig quiz on the wall—three questions stand between you and the lab badge.
 [[Begin quiz->Q1]]
 
@@ -66,7 +63,7 @@ Hypotenuse with legs 7 km & 24 km?
 
 :: WrongQ1
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:160px; float:right;">
 Not quite—remember the 7‑24‑25 triple.
 (link:"Video help")[(open-url:"https://youtu.be/77XAdyWz5SM")]
 [[Retry->Q1]]
@@ -81,7 +78,7 @@ If sin θ = 3/4 and opposite = 9 m, hypotenuse?
 
 :: WrongQ2
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:160px; float:right;">
 Hint: hyp = 9 ÷ 0.75.
 (link:"Video")[(open-url:"https://youtu.be/77XAdyWz5SM")]
 [[Retry->Q2]]
@@ -96,22 +93,22 @@ Hypotenuse = 5 m, opposite = 4 m. sin θ?
 
 :: WrongQ3
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:160px; float:right;">
 sin θ = 4 / 5 = 0.8.
 [[Retry->Q3]]
 
 :: InterviewPass
 (set:$playerLevel to "Assistant")(set:$credit to (min:200,$credit+50))
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:160px; float:right;">
 ***Promoted to Assistant (+50 credit).***
 [[Proceed to Bootcamp->BootcampWelcome]]
 
 :: BootcampWelcome
-(set:$hourLeft to 60)
 (display:"StatusBar")
+<img src="https://cdn.pixabay.com/photo/2017/08/18/08/03/idea-2654148_1280.jpg" style="max-width:1000px;">
 Welcome to the **Tidal‑Model Bootcamp**.
-(link-replace:"Bootcamp rules")[Earn **+20** credit first correct pick, **−5** for each miss.<br>Hit 100 → Scientist, 150 → Leading Scientist.]
+(link-replace:"Bootcamp rules")[Earn **+20** credit per first correct pick, **−5** for each miss. Reach **100** credit → Lab access, **150** → Leading Scientist.]
 [[Start work->BootcampIntro]]
 
 :: BootcampIntro
@@ -121,11 +118,11 @@ Choose a parameter to recover:
 (if: not $midDone)[* [[Midline->ParamMid]]]
 (if: not $ampDone)[* [[Amplitude->ParamAmp]]]
 (if: not $perDone)[* [[Period->ParamPer]]]
-(if: $midDone and $ampDone and $perDone)[[[Evaluate recovered model->BootcampEval]]]+(else:)[[[Skip parameter recovery and head to War Room->WarRoom]] ]
+(if: $midDone and $ampDone and $perDone)[Wow! you recovered all parameters, and now you want to rush to the computing center to let the super computer [[evaluate recovered model->BootcampEval]]](else:)[[[Or you can skip parameter recovery and head to War Room->WarRoom]]]
 
 :: ParamMid
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:800px; float:right;">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:1000px; float:right;">
 Midline value?
 * [[-8->MidRight]]
 * [[-18->MidWrong]]
@@ -135,20 +132,20 @@ Midline value?
 :: MidRight
 (set:$credit to (min:200,$credit+20))(set:$midDone to true)
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:160px; float:right;">
 Midline correct (+20).
 [[Back->BootcampIntro]]
 
 :: MidWrong
 (set:$credit to (max:0,$credit-5))
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:160px; float:right;">
 −5 credit: midline sits halfway between crest & trough.
 [[Retry->ParamMid]]
 
 :: ParamAmp
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:800px; float:right;">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:1000px; float:right;">
 Amplitude?
 * [[10->AmpRight]]
 * [[-8->AmpWrong]]
@@ -158,20 +155,20 @@ Amplitude?
 :: AmpRight
 (set:$credit to (min:200,$credit+20))(set:$ampDone to true)
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:160px; float:right;">
 Amplitude correct (+20).
 [[Back->BootcampIntro]]
 
 :: AmpWrong
 (set:$credit to (max:0,$credit-5))
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:160px; float:right;">
 −5 credit: amplitude is peak height above the midline.
 [[Retry->ParamAmp]]
 
 :: ParamPer
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:800px; float:right;">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:1000px; float:right;">
 Period?
 * [[16->PerRight]]
 * [[6.28->PerWrong]]
@@ -179,73 +176,98 @@ Period?
 * [[10->PerWrong]]
 
 :: PerRight
-(set:$credit to (min:200,$credit+20))
-(set:$perDone to true)
+(set:$credit to (min:200,$credit+20))(set:$perDone to true)
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif" style="max-width:160px; float:right;">
 Period correct (+20).
 [[Back->BootcampIntro]]
 
 :: PerWrong
 (set:$credit to (max:0,$credit-5))
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:180px; float:right;">
+<img src="https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif" style="max-width:160px; float:right;">
 Period = one full cycle width (−5).
 [[Retry->ParamPer]]
 
 :: BootcampEval
 (display:"StatusBar")
-(if:$credit >= 150)[(set:$playerLevel to "Leading Scientist")Badge unlocked! [[Enter Lab->LabStart]]]
-+(elseif:$credit >= 100)[(set:$playerLevel to "Scientist")Promotion achieved—welcome to the lab. [[Enter Lab->LabStart]]]
-+(else:)[Credit below 100—use borrowed model. [[Go to War Room->WarRoom]]]
+<!-- Anticipation text + branching -->
+<!-- Anticipation text + branching -->
+(if:$credit >= 150)[
+<img src="https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg" style="max-width:1000px;">
+Your **$credit credit** smashes the record—welcome, **Leading Scientist**! The [[high-tech research lab->LabStart]] doors slide open for you to craft a brand-new model before Calypso hits.
+](elseif:$credit >= 100)[
+<img src="https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg" style="max-width:1000px;">
+Great job! With $credit credit you’re now a **Scientist**. You’ll head to the [[high-tech research lab->LabStart]] to fit a fresh equation and guide the engineers.
+](else:)[
+<img src="https://cdn.pixabay.com/photo/2012/12/08/23/23/control-room-69118_1280.jpg" style="max-width:1000px;">
+You’ve gathered $credit credit—short of promotion, but your insights are still crucial. The council calls you straight to the War Room to vote on the flood-wall.
+[[Head to War Room->WarRoom]]
+]
 
 :: LabStart
 (set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)
-(live:60s)[(set:$hourLeft to $hourLeft-1)(if:$hourLeft <= 0)[(goto:"BootcampWelcome")]]
+(set:$hourLeft to 60)
+(set:$secLeft to 3600)
+(live:1s)[
+  (set:$secLeft to $secLeft-1)
+  (set:$hourLeft to (floor:$secLeft/60))
+  (replace:?bar)[ ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:($secLeft%60) < 10)['0'](print:($secLeft%60)) ] ]
+  (if:$secLeft <= 0)[(goto:"BootcampWelcome")]
+] ](if:$hourLeft <= 0)[(goto:"BootcampWelcome")]]
 (display:"StatusBar")
-Hurricane Calypso is ~30 h out; engineers need an hour’s warning to fortify.  
-Your tide model must be finished in the next **60 minutes**.  
+Hurricane Calypso is ~30 h out; engineers need one hour’s notice. Your model must be ready in **60 minutes**.
 
-Two data avenues beckon—choose one to shape *f(x)=A·sin(B·(x+C))+D*:  
-• [[Jamie’s lighthouse logs (–4 min)->DataJamie]] — handwritten peaks via the old keeper.  
-• [[Port Authority buoy stream (–2 min)->DataBuoy]] — live sensor heights from the harbor.
+Stormhaven’s data team offers **two distinct feeds** to anchor your model:
+
+* **Jamie’s lighthouse logs** — Jamie scoured dusty ledgers with the retired keeper and cross‑checked peaks with seasoned fishermen. Rich historical peaks but slightly noisy. *(costs 4 min)* [[Use Jamie’s logs (–4 min)->DataJamie]]
+* **Port Authority buoy stream** — a laser‑calibrated buoy outside the breakwater posts readings every 30 seconds. Ultra‑fresh but only covers the last 18 hours. *(costs 2 min)* [[Tap buoy stream (–2 min)->DataBuoy]]
+
+Choose wisely; whichever dataset you trust will set the curve of *f(x)=A·sin(B·(x+C))+D*—and every minute counts.
 
 :: DataJamie
 (set:$hourLeft to $hourLeft-4)
+(set:$secLeft to $secLeft-240)  <!-- subtract 4 min -->
+(set:$secLeft to $secLeft-240)   <!-- 4 min -->
 (display:"StatusBar")
-Jamie’s logs record tide peaks roughly every 5.8 h.  
+<img src="https://cdn.pixabay.com/photo/2021/01/01/22/12/lighthouse-5880159_1280.jpg" style="max-width:1000px;">
+Jamie’s logs record tide peaks and the tide level at other point in time.  
 These data will seed *f(x)=A·sin(B·(x+C))+D*, where **A** is amplitude, **B** sets frequency, **C** shifts phase, **D** is mid-sea-level.
-[[Chart->LabChart]]
+You can not wait puting the data point into a [[Chart->LabChart]]...
 
 :: DataBuoy
 (set:$hourLeft to $hourLeft-2)
+(set:$secLeft to $secLeft-120)  <!-- subtract 2 min -->
+(set:$secLeft to $secLeft-120)   <!-- 2 min -->
 (display:"StatusBar")
-Buoy sensors stream tide heights every 30 min—clean, high-resolution curves.  
-You’ll fit them to *f(x)=A·sin(B·(x+C))+D* by tuning each coefficient.
+<img src="https://cdn.pixabay.com/photo/2020/02/12/20/38/buoy-4843825_1280.jpg" style="max-width:1000px;">
+Buoy sensors stream heights every 30 min—clean data for *f(x)=A·sin(B·(x+C))+D*.
 [[Chart->LabChart]]
 
 :: LabChart
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczONXZG6QUFyJzzzM2TNs47LKV5mMts3t3OPnZb5NCEYJi6bI66_tLoCVNgwKcr-2mYIDaOkJkYqijQtzn-kjHGmUEltLXGZn18LcwhbcUf_CoiK5p0uB08yrcwx28KHDt5wyiIJ0QkN_I3R-xQQD0Q=w1070-h934-s-no?authuser=0" style="max-width:800px;">
+<!-- 1‑second live countdown that updates the status bar -->
+(live:1s)[
+  (set:$secLeft to $secLeft-1)
+  (set:$hourLeft to (floor:$secLeft/60))
+  (replace:?bar)[ ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:($secLeft%60) < 10)['0'](print:($secLeft%60)) ] ]
+  (if:$secLeft <= 0)[(goto:"BootcampWelcome")]
+]
+
 Forecast model: *f(x)=A·sin(B·(x+C))+D*  
-Pick values that align the curve with your dataset.
+Select each coefficient:
 
-A = (dropdown: bind $A,"select","5.0","4.8","1.0","3.3","12.4","36π","5π")
-B = (dropdown: bind $B,"select","11/14","π/4","22/7","1.57","3.42","2π","10")
-C = (dropdown: bind $C,"select","6.0","5.8","3π/2","11/14","22/7","4.9","13.6")
-D = (dropdown: bind $D,"select","10","11","9","12","15","8","5")
+*f(x)= (dropdown: bind $A,"select","5.0","4.8","1.0","3.3","12.4","36π","5π") · sin((dropdown: bind $B,"select","11/14","π/4","22/7","1.57","3.42","2π","10") · (x + (dropdown: bind $C,"select","6.0","5.8","3π/2","11/14","22/7","4.9","13.6"))) + (dropdown: bind $D,"select","10","11","9","12","15","8","5")*
 
-{
-(if: $A is not "select" and $B is not "select"
-    and $C is not "select" and $D is not "select")
-  [[Submit->ModelEval]]
-(else:)
-  (text-color:#888)[(italic:Submit once all four are chosen)]
-}
-
+(if: $A is not "select" and $B is not "select" and $C is not "select" and $D is not "select")[
+  [[Submit your model for verification->ModelEval]]
+](else:)[
+  (text-color:#888)[//Choose all four coefficients to enable Submit//]
+]
 
 :: ModelEval
 <!-- Evaluate coefficient selection, THEN show status bar so values are current -->
+(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[ ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:$secLeft%60 < 10)['0'](print:$secLeft%60) ]  ](if:$secLeft <= 0)[(goto:"BootcampWelcome")]]
 (set:$correct to 0)
 (if:$A is "5.0" or $A is "4.8")[(set:$correct to $correct+1)]
 (if:$B is "11/14" or $B is "π/4")[(set:$correct to $correct+1)]
@@ -253,81 +275,78 @@ D = (dropdown: bind $D,"select","10","11","9","12","15","8","5")
 (if:$D is "10" or $D is "11" or $D is "9")[(set:$correct to $correct+1)]
 <!-- Apply credit penalties BEFORE status bar -->
 (if:$correct is 2)[(set:$credit to (max:0,$credit-10))]
-+(elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))]
-+(elseif:$correct is 0)[(set:$credit to (max:0,$credit-50))]
+(elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))]
+(elseif:$correct is 0)[(set:$credit to (max:0,$credit-50))]
 (display:"StatusBar")
 You scored $correct / 4.  
 Every mismatch nudges the forecast off course—refine and out‑smart the storm!
 
-(if:$correct is 4)[[[WarRoom->WarRoom]]]
-+(elseif:$correct is 3)[[[Refine (no penalty)->LabChart]]]
-+(elseif:$correct is 2)[[[Retry (–10)->LabChart]]]
-+(elseif:$correct is 1)[[[Retry (–20)->LabChart]]]
-+(else:)[[[Retry (–50)->LabChart]]]
-(if:$credit < 20)[(set:$playerLevel to "Assistant")(goto:"BootcampWelcome")]
+(if:$credit < 20)[
+<img src="https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg" style="max-width:1000px;">
+You tried your best, however, you do not have enough credit to move on. Maybe taking a step back working as an assistant is your best fit (set:$playerLevel to "Assistant")(dialog:"Bootcamp again. I will be back soon!")(goto:"BootcampWelcome")]
+
+(if:$correct is 4)[
+<img src="https://cdn.pixabay.com/photo/2017/08/27/09/19/woman-2685460_1280.jpg" style="max-width:1000px;">
+[[You are excited and dash to the War Room->WarRoom]] with your model]
+(elseif:$correct is 3)[
+<img src="https://cdn.pixabay.com/photo/2017/08/27/09/20/woman-2685461_1280.jpg" style="max-width:1000px;">
+Not quite right! you definitely will not give up, you will [[refine the model (no penalty)->LabChart]]]
+(elseif:$correct is 2)[
+<img src="https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg" style="max-width:1000px;">
+Not there yet, what's wrong? you want to[[retry (–10)->LabChart]]]
+(elseif:$correct is 1)[
+<img src="https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg" style="max-width:1000px;">
+Never mind, I will[[retry (–20)->LabChart]]]
+(else:)[[[Retry (–50)->LabChart]]]
 
 :: WarRoom
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2021/10/29/09/27/lake-6751477_1280.jpg" style="max-width:600px;">
-Hard‑hatted engineers crowd the situation table: “Give us the green light,” they plead, concrete barriers and inflatable flood walls loaded on flatbeds.  
-Your forecast shows how high Calypso’s surge may climb—fortification takes the full hour you have left.  
-Should the city spend the budget and raise a temporary wall before water arrives?
-* [[Authorize flood‑wall crews->FortYes]]
+<img src="https://cdn.pixabay.com/photo/2021/10/29/09/27/lake-6751477_1280.jpg" style="max-width:1000px;">
+Hard-hatted engineers crowd the table: concrete and inflatable walls are ready. Calypso’s surge is close. Fortify or gamble?
+* [[Authorize flood-wall crews->FortYes]]
 * [[Hold off—trust the existing dam->FortNo]]
 
 :: FortYes
 (set:$isDamFortified to true)
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:600px;">
-Sirens echo as crews race to stack concrete blocks and inflate flood walls—only $hourLeft minutes remain as Calypso’s spiral bands creep over the horizon.
+<img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:1000px;">
+Crews race to raise barriers—only $hourLeft min remain as Calypso’s bands loom.
 [[Outcome->Outcome]]
 
 :: FortNo
 (set:$isDamFortified to false)
 (display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:600px;">
-You hesitate—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge. All eyes turn to the aging dam, silhouetted against lightning flashes.
-[[Outcome->Outcome]]
-(set:$isDamFortified to false)
-(display:"StatusBar")
-<img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:600px;">
-You hesitate—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge. All eyes turn to the aging dam, silhouetted against lightning flashes.
-[[Outcome->Outcome]]—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge.  
-All eyes turn to the aging dam, silhouetted against the storm-lit horizon.  
+<img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:1000px;">
+You wait—just $hourLeft min left; the old dam stands alone in lightning flashes.
 [[Outcome->Outcome]]
 
 :: Outcome
 (display:"StatusBar")
 (set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))
-<video src="https://cdn.pixabay.com/video/2019/12/05/29831-377694384_large.mp4" autoplay loop muted style="max-width:600px;"></video>
+<video src="https://cdn.pixabay.com/video/2019/12/05/29831-377694384_large.mp4" autoplay loop muted style="max-width:1000px;"></video>
 The roar of Calypso slams the coast—spray lashes the dam as seconds crawl by…
 (live:10s)[
-  (if: $isDamFortified)[(goto:"EndProtected")]
-  +(elseif: $overflow)[(goto:"EndFlooded")]
-  +(else:)[(goto:"EndProtected")]
-] slams the coast—spray lashes the dam as seconds crawl by…
-(live:10s)[
-  (if: $isDamFortified)[(goto:"EndProtected")]
-  +(elseif: $overflow)[(goto:"EndFlooded")]
-  +(else:)[(goto:"EndProtected")]
+  (if:$isDamFortified)[(goto:"EndProtected")]
+  (elseif:$overflow)[(goto:"EndFlooded")]
+  (else:)[(goto:"EndProtected")]
 ]
 
 :: EndProtected
 (display:"StatusBar")
+<img src="https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg" style="max-width:1000px;">
 (if:$playerLevel is "Assistant")[
-Your quick, clear-headed work in **Bootcamp** gave Stormhaven the numbers it needed—even without time in the lab. Engineers built the flood‑wall exactly where you advised, and not a single street is wet.  
-]
-+(else:)[
-Your lab-forged tide model nailed Calypso’s crest. Crews salute your precision as the new wall holds back a roaring surge. **Scientist** notoriety earned!  
+Your quick Bootcamp work gave Stormhaven the numbers it needed—even without lab time. The new wall holds; you saved the town!
+](else:)[
+Your lab model nailed Calypso’s crest. The wall holds, and scientists salute your precision. Well done!
 ]
 [[Restart->Start]]
 
 :: EndFlooded
 (display:"StatusBar")
+<img src="https://cdn.pixabay.com/photo/2020/06/22/21/10/flooded-5330617_1280.jpg" style="max-width:1000px;">
 (if:$playerLevel is "Assistant")[
-Your Bootcamp insights were solid, but without a lab-tuned model the estimate fell short—the surge spilled over the aging dam. Stormhaven will rebuild, and so will your experience. Study the patterns and try again.  
-]
-+(else:)[
-Even seasoned scientists can misread a storm—one coefficient off and the flood slipped through. Calypso teaches a hard lesson: revisit your data and return stronger.  
+Your Bootcamp insights fell short without a lab-tuned model—water overtopped the dam. Study the waves and try again.
+](else:)[
+One coefficient off let the flood through—Calypso teaches a hard lesson. Revisit the data and return stronger.
 ]
 [[Restart->Start]]
