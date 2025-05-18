@@ -214,7 +214,7 @@ You’ve gathered $credit credit—short of promotion, but your insights are sti
   (set:$hourLeft to (floor:$secLeft/60))
   (replace:?bar)[ ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:($secLeft%60) < 10)['0'](print:($secLeft%60)) ] ]
   (if:$secLeft <= 0)[(goto:"BootcampWelcome")]
-] ](if:$hourLeft <= 0)[(goto:"BootcampWelcome")]]
+] (if:$hourLeft <= 0)[(goto:"BootcampWelcome")]
 (display:"StatusBar")
 Hurricane Calypso is ~30 h out; engineers need one hour’s notice. Your model must be ready in **60 minutes**.
 
