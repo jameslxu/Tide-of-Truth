@@ -4,197 +4,144 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>Tide of Truth</title>
+<title>Untitled Story</title>
 <style title="Twine CSS">@keyframes appear{0%{opacity:0}to{opacity:1}}@keyframes fade-in-out{0%,to{opacity:0}50%{opacity:1}}@keyframes rumble{25%{top:-0.1em}75%{top:.1em}0%,to{top:0px}}@keyframes shudder{25%{left:.1em}75%{left:-0.1em}0%,to{left:0px}}@keyframes buoy{25%{top:.25em}75%{top:-0.25em}0%,to{top:0px}}@keyframes sway{25%{left:.25em}75%{left:-0.25em}0%,to{left:0px}}@keyframes pulse{0%{transform:scale(0, 0)}20%{transform:scale(1.2, 1.2)}40%{transform:scale(0.9, 0.9)}60%{transform:scale(1.05, 1.05)}80%{transform:scale(0.925, 0.925)}to{transform:scale(1, 1)}}@keyframes zoom-in{0%{transform:scale(0, 0)}to{transform:scale(1, 1)}}@keyframes shudder-in{0%,to{transform:translateX(0em)}5%,25%,45%{transform:translateX(-1em)}15%,35%,55%{transform:translateX(1em)}65%{transform:translateX(-0.6em)}75%{transform:translateX(0.6em)}85%{transform:translateX(-0.2em)}95%{transform:translateX(0.2em)}}@keyframes rumble-in{0%,to{transform:translateY(0em)}5%,25%,45%{transform:translateY(-1em)}15%,35%,55%{transform:translateY(1em)}65%{transform:translateY(-0.6em)}75%{transform:translateY(0.6em)}85%{transform:translateY(-0.2em)}95%{transform:translateY(0.2em)}}@keyframes fidget{0%,8.1%,82.1%,31.1%,38.1%,44.1%,40.1%,47.1%,74.1%,16.1%,27.1%,72.1%,24.1%,95.1%,6.1%,36.1%,20.1%,4.1%,91.1%,14.1%,87.1%,to{left:0px;top:0px}8%,82%,31%,38%,44%{left:-1px}40%,47%,74%,16%,27%{left:1px}72%,24%,95%,6%,36%{top:-1px}20%,4%,91%,14%,87%{top:1px}}@keyframes slide-right{0%{transform:translateX(-100vw)}}@keyframes slide-left{0%{transform:translateX(100vw)}}@keyframes slide-up{0%{transform:translateY(100vh)}}@keyframes slide-down{0%{transform:translateY(-100vh)}}@keyframes fade-right{0%{opacity:0;transform:translateX(-1em)}to{opacity:1}}@keyframes fade-left{0%{opacity:0;transform:translateX(1em)}to{opacity:1}}@keyframes fade-up{0%{opacity:0;transform:translateY(1em)}to{opacity:1}}@keyframes fade-down{0%{opacity:0;transform:translateY(-1em)}to{opacity:1}}@keyframes flicker{0%,29%,31%,63%,65%,77%,79%,86%,88%,91%,93%{opacity:0}30%{opacity:.2}64%{opacity:.4}78%{opacity:.6}87%{opacity:.8}92%,to{opacity:1}}@keyframes blur{0%{filter:blur(2rem);opacity:0}25%{opacity:1}to{filter:blur(0rem);opacity:1}}.dom-debug-mode tw-story,.dom-debug-mode tw-passage,.dom-debug-mode tw-sidebar,.dom-debug-mode tw-include,.dom-debug-mode tw-hook,.dom-debug-mode tw-expression,.dom-debug-mode tw-link,.dom-debug-mode tw-dialog,.dom-debug-mode tw-columns,.dom-debug-mode tw-column,.dom-debug-mode tw-align{outline:1px solid #f5a3da;min-height:32px;display:block !important}.dom-debug-mode tw-story::before,.dom-debug-mode tw-passage::before,.dom-debug-mode tw-sidebar::before,.dom-debug-mode tw-include::before,.dom-debug-mode tw-hook::before,.dom-debug-mode tw-expression::before,.dom-debug-mode tw-link::before,.dom-debug-mode tw-dialog::before,.dom-debug-mode tw-columns::before,.dom-debug-mode tw-column::before,.dom-debug-mode tw-align::before{position:absolute;top:0;left:0;height:16px;background-color:#f5a3da;color:#000;font-size:16px;font-weight:normal;font-style:normal;font-family:monospace;display:inline-block;line-height:100%;white-space:pre;z-index:999997}.dom-debug-mode tw-story:hover,.dom-debug-mode tw-passage:hover,.dom-debug-mode tw-sidebar:hover,.dom-debug-mode tw-include:hover,.dom-debug-mode tw-hook:hover,.dom-debug-mode tw-expression:hover,.dom-debug-mode tw-link:hover,.dom-debug-mode tw-dialog:hover,.dom-debug-mode tw-columns:hover,.dom-debug-mode tw-column:hover,.dom-debug-mode tw-align:hover{outline:1px solid #fc9}.dom-debug-mode tw-story:hover::before,.dom-debug-mode tw-passage:hover::before,.dom-debug-mode tw-sidebar:hover::before,.dom-debug-mode tw-include:hover::before,.dom-debug-mode tw-hook:hover::before,.dom-debug-mode tw-expression:hover::before,.dom-debug-mode tw-link:hover::before,.dom-debug-mode tw-dialog:hover::before,.dom-debug-mode tw-columns:hover::before,.dom-debug-mode tw-column:hover::before,.dom-debug-mode tw-align:hover::before{background-color:#fc9;transition:background-color 1s}.dom-debug-mode tw-passage,.dom-debug-mode tw-include,.dom-debug-mode tw-hook,.dom-debug-mode tw-expression,.dom-debug-mode tw-link,.dom-debug-mode tw-dialog,.dom-debug-mode tw-columns,.dom-debug-mode tw-column,.dom-debug-mode tw-align{padding:1em;margin:0}.dom-debug-mode tw-story::before{content:'<tw-story tags="' attr(tags) '">'}.dom-debug-mode tw-passage::before{top:-16px;content:'<tw-passage tags="' attr(tags) '">'}.dom-debug-mode tw-sidebar::before{top:-16px;content:"<tw-sidebar>"}.dom-debug-mode tw-hook::before{content:'<tw-hook name="' attr(name) '">'}.dom-debug-mode tw-expression::before{content:'<tw-expression name="' attr(name) '">'}.dom-debug-mode tw-link::before{content:'<tw-link name="' attr(name) '">'}.dom-debug-mode tw-dialog::before{content:"<tw-dialog>"}.dom-debug-mode tw-columns::before{content:"<tw-columns>"}.dom-debug-mode tw-column::before{content:"<tw-column>"}.dom-debug-mode tw-align::before{content:"<tw-align>"}.dom-debug-mode tw-include::before{content:'<tw-include type="' attr(type) '" name="' attr(name) '">'}tw-open-button[goto]{display:none}.debug-mode tw-open-button[replay],.debug-mode tw-open-button[goto]{display:inline}.debug-mode tw-expression{display:inline-block !important}.debug-mode tw-expression[type=variable]::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"$" attr(name)}.debug-mode tw-expression[type=tempVariable]::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"_" attr(name)}.debug-mode tw-expression[return=boolean]{background-color:rgba(179,179,179,.2)}.debug-mode tw-expression[return=array]{background-color:rgba(255,102,102,.2)}.debug-mode tw-expression[return=dataset]{background-color:rgba(255,128,0,.2)}.debug-mode tw-expression[return=number]{background-color:rgba(255,179,102,.2)}.debug-mode tw-expression[return=datamap]{background-color:rgba(255,255,102,.2)}.debug-mode tw-expression[return=changer]{background-color:rgba(179,255,102,.2)}.debug-mode tw-expression[return=lambda]{background-color:rgba(102,255,102,.2)}.debug-mode tw-expression[return=hookname]{background-color:rgba(102,255,204,.2)}.debug-mode tw-expression[return=string]{background-color:rgba(102,255,255,.2)}.debug-mode tw-expression[return=datatype]{background-color:rgba(102,153,255,.2)}.debug-mode tw-expression[return=gradient],.debug-mode tw-expression[return=colour]{background-color:rgba(204,102,255,.2)}.debug-mode tw-expression[return=instant],.debug-mode tw-expression[return=macro]{background-color:rgba(240,117,199,.2)}.debug-mode tw-expression[return=command]{background-color:rgba(153,153,255,.2)}.debug-mode tw-expression.false{background-color:rgba(255,0,0,.2) !important}.debug-mode tw-expression[type=macro]::before{content:"(" attr(name) ":)";padding:0 .5rem;font-size:1rem;vertical-align:middle;line-height:normal;background-color:inherit;border:1px solid rgba(255,255,255,.5)}.debug-mode tw-expression[title]:not([title=""]){cursor:help}.debug-mode tw-hook{background-color:rgba(0,85,255,.1) !important}.debug-mode tw-hook::before{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"["}.debug-mode tw-hook::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"]"}.debug-mode tw-hook[name]::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"]<" attr(name) "|"}.debug-mode tw-pseudo-hook{background-color:rgba(255,170,0,.1) !important}.debug-mode tw-collapsed::before{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"{"}.debug-mode tw-collapsed::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"}"}.debug-mode tw-verbatim::before,.debug-mode tw-verbatim::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:"`"}.debug-mode tw-align[style*="text-align: center"]{background:linear-gradient(to right, hsla(14, 100%, 87%, 0) 0%, hsla(14, 100%, 87%, 0.25) 50%, hsla(14, 100%, 87%, 0) 100%)}.debug-mode tw-align[style*="text-align: left"]{background:linear-gradient(to right, hsla(14, 100%, 87%, 0.25) 0%, hsla(14, 100%, 87%, 0) 100%)}.debug-mode tw-align[style*="text-align: right"]{background:linear-gradient(to right, hsla(14, 100%, 87%, 0) 0%, hsla(14, 100%, 87%, 0.25) 100%)}.debug-mode tw-column{background-color:rgba(189,228,255,.2)}.debug-mode tw-enchantment{animation:enchantment .5s infinite;border:1px solid}.debug-mode tw-link::after,.debug-mode tw-broken-link::after{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:attr(passage-name)}.debug-mode tw-include{background-color:rgba(204,128,51,.1)}.debug-mode tw-include::before{font-size:.8rem;padding-left:.2rem;padding-right:.2rem;vertical-align:top;content:attr(type) ' "' attr(name) '"'}.debug-dialogs tw-backdrop:not(.eval-replay):not(.harlowe-crash){pointer-events:none;opacity:.1}tw-eval-replay tw-eval-code,tw-eval-replay tw-eval-explanation{max-height:20vh;overflow:auto;margin:10px auto}tw-eval-replay tw-eval-code{display:block;font-family:monospace;padding-bottom:1ex;border-bottom:2px solid gray}tw-eval-replay tw-eval-explanation{display:block;text-align:center}tw-eval-replay tw-eval-explanation>code{white-space:pre-wrap}tw-eval-replay tw-eval-explanation>code.from-block{width:40%;display:inline-block;text-align:left;max-height:4em;overflow-wrap:anywhere;overflow-y:scroll}tw-eval-replay tw-eval-explanation>code.from-block~.to-desc{width:calc(40% - 2em);margin-left:2em;display:inline-block}tw-eval-replay tw-eval-explanation>code.from-block+span::after{content:"..."}tw-eval-replay tw-eval-explanation>code.from-inline{text-align:right}tw-eval-replay tw-eval-explanation>:nth-child(2){white-space:pre}tw-eval-replay tw-eval-explanation>.to-desc{text-align:left}tw-eval-replay tw-eval-explanation>table{width:100%;margin-top:1em}tw-eval-replay tw-eval-explanation>table td{white-space:pre-wrap !important;word-wrap:anywhere}tw-eval-replay tw-eval-reason{text-align:center;font-size:80%;font-style:italic;display:block}tw-eval-replay tw-eval-it{text-align:center;font-size:80%;display:block}tw-eval-replay tw-dialog-links{display:-ms-flexbox;display:flex;-ms-flex-pack:distribute;justify-content:space-around}@keyframes enchantment{0%,to{border-color:#ffb366}50%{border-color:#6fc}}tw-debugger{position:fixed;box-sizing:border-box;bottom:0;right:0;z-index:999999;min-width:14em;min-height:1em;padding:0em .5em .5em 1em;font-size:1.25em;font-family:sans-serif;color:#262626;background-color:#fff;border-left:solid #262626 2px;border-top:solid #262626 2px;border-top-left-radius:.5em;opacity:1}tw-debugger.fade-panel:not(:hover){opacity:.33}tw-debugger.theme-dark{color:#d9d9d9;background-color:#000}tw-debugger.theme-dark{border-color:#d9d9d9 rgba(0,0,0,0) rgba(0,0,0,0) #d9d9d9}tw-debugger select{margin-right:1em;width:12em}tw-debugger button,tw-debugger tw-link{border-radius:3px;border:solid #999 1px;margin:auto 4px;color:#262626;background-color:#fff;cursor:pointer}tw-debugger button.enabled,tw-debugger tw-link.enabled{color:#000;background-color:#d9d9d9;box-shadow:inset #999 3px 5px .5em}tw-debugger.theme-dark button,tw-debugger.theme-dark tw-link{color:#d9d9d9;background-color:#000;border-color:#666}tw-debugger.theme-dark button.enabled,tw-debugger.theme-dark tw-link.enabled{color:#e6e6e6;background-color:#424242;box-shadow:inset #666 3px 5px .5em}tw-debugger button{font-size:1em;overflow-x:hidden;text-overflow:ellipsis;white-space:pre}tw-debugger tw-link{font-size:1.25em;border-radius:16px;border-style:solid;border-width:2px;text-align:center;padding:0px 8px;display:block}tw-debugger tw-link:hover{border-color:#262626;color:#262626}tw-debugger.theme-dark tw-link:hover{border-color:#d9d9d9;color:#d9d9d9}tw-debugger tw-dialog{background-color:#fff;color:#000;font-size:1.25em}tw-debugger.theme-dark tw-dialog{background-color:#000;color:#e6e6e6}tw-debugger .panel{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:absolute;bottom:100%;left:-2px;right:0;padding:1em;overflow-y:scroll;overflow-x:hidden;border:inherit;box-sizing:content-box;background-color:#fff;border-bottom:solid #999 2px;border-top-left-radius:.5em;border-bottom-left-radius:.5em;font-size:.8em}tw-debugger .panel:empty,tw-debugger .panel[hidden]{display:none}tw-debugger.theme-dark .panel{background-color:#000;border-bottom-color:#666}tw-debugger .panel-source .panel-row-buttons{width:2rem}tw-debugger .panel-source .source-tags{width:20%;font-style:italic}tw-debugger .panel-row-source td{font-family:monospace;font-size:1rem;white-space:pre-wrap;overflow-wrap:anywhere;max-height:8rem;padding:1rem}tw-debugger .panel-rows{width:100%;overflow-x:scroll}tw-debugger .panel-rows>*{display:table-row}tw-debugger .panel-rows>div:nth-of-type(2n){background-color:#e6e6e6}tw-debugger .panel-tools .panel-rows>*,tw-debugger .panel-options .panel-rows>*{margin-top:.4rem;display:block}tw-debugger.theme-dark .panel-rows>div:nth-of-type(2n){background-color:#212121}tw-debugger .panel-row-buttons{text-align:right}tw-debugger .panel-variables .panel-rows:empty::before{content:"~ No variables ~";font-style:italic;color:#575757;text-align:center}tw-debugger .panel-enchantments .panel-rows:empty::before{content:"~ No enchantments ~";font-style:italic;color:#575757;text-align:center}tw-debugger .panel-errors .panel-rows:empty::before{content:"~ No errors... for now. ~";font-style:italic;color:#575757;text-align:center}tw-debugger .panel-errors .panel-rows:empty+.panel-errors-bottom{display:none}tw-debugger.theme-dark .panel-variables .panel-rows:empty::before,tw-debugger.theme-dark .panel-enchantments .panel-rows:empty::before,tw-debugger.theme-dark .panel-errors .panel-rows:empty::before{color:#a8a8a8}tw-debugger .panel-rows:empty+.panel-variables-bottom{display:none}tw-debugger th[data-col]{text-decoration:underline;cursor:pointer}tw-debugger th[data-col][data-order=asc]::after{content:"↓"}tw-debugger th[data-col][data-order=desc]::after{content:"↑"}tw-debugger .panel-storylets:not(.panel-exclusive) .storylet-exclusive,tw-debugger .panel-storylets:not(.panel-urgent) .storylet-urgent{display:none}tw-debugger .storylet-exclusive,tw-debugger .storylet-urgent,tw-debugger .storylet-open{text-align:center}tw-debugger .panel-variables-bottom{padding-top:5px}tw-debugger .enchantment-row{min-height:1.5em}tw-debugger .variable-path{opacity:.4}tw-debugger .temporary-variable-scope,tw-debugger .enchantment-local{font-family:sans-serif;font-weight:normal;opacity:.8;font-size:.75em}tw-debugger .temporary-variable-scope:not(:empty)::before,tw-debugger .enchantment-local:not(:empty)::before{content:" in "}tw-debugger .variable-name,tw-debugger .enchantment-name{font-family:monospace;font-weight:bold}tw-debugger .variable-type{color:#575757;font-weight:normal;text-overflow:ellipsis;overflow:hidden;max-width:10em}tw-debugger.theme-dark .variable-type{color:#a8a8a8}tw-debugger .error-row{display:table-row;background-color:rgba(230,101,204,.3)}tw-debugger .error-row:nth-of-type(2n){background-color:rgba(237,145,219,.3)}tw-debugger .error-row>*{display:table-cell;padding:.25em .5em}tw-debugger .error-row .error-message[title]:not([title=""]){cursor:help}tw-debugger .error-row .error-passage{color:#575757}tw-debugger.theme-dark .error-row .error-passage{color:#a8a8a8}tw-debugger .storylet-row{background-color:rgba(193,240,225,.3)}tw-debugger .storylet-row:nth-child(2n){background-color:rgba(152,231,204,.3)}tw-debugger .storylet-row.storylet-closed{font-style:italic;background-color:#fff}tw-debugger .storylet-row.storylet-closed:nth-child(2n){background-color:#e6e6e6}tw-debugger .storylet-row.storylet-closed>:not(.storylet-lambda){opacity:.6}.storylet-error tw-debugger .storylet-row{background-color:rgba(230,101,204,.3)}.storylet-error tw-debugger .storylet-row:nth-child(2n){background-color:rgba(237,145,219,.3)}tw-debugger .storylet-row .storylet-name,tw-debugger .storylet-row .storylet-value{display:inline-block;width:50%}tw-debugger .storylet-row .storylet-lambda{font-family:monospace;font-size:1rem;white-space:pre-wrap;overflow-wrap:anywhere}tw-debugger.theme-dark .storylet-row.storylet-closed{background-color:#000}tw-debugger.theme-dark .storylet-row.storylet-closed:nth-child(2n){background-color:#212121}tw-debugger .tabs{padding-bottom:.5em}tw-debugger .tab{border-radius:0px 0px .5em .5em;border-top:none;top:-2px}tw-debugger .resizer-h{position:absolute;height:14em;border-left:2px solid #999;border-right:2px solid #999;top:10px;left:4px;width:8px;cursor:ew-resize}tw-debugger.theme-dark .resizer-h{border-color:rgba(0,0,0,0) #666}tw-debugger .resizer-v{position:absolute;height:8px;border-top:2px solid #999;border-bottom:2px solid #999;margin-bottom:4px;top:4px;left:10px;width:95%;cursor:ns-resize;box-sizing:border-box}tw-debugger.theme-dark .resizer-v{border-color:#666 rgba(0,0,0,0)}tw-debugger mark{color:inherit;background-color:rgba(101,230,230,.3) !important}tw-dialog{z-index:999997;border:#fff solid 2px;padding:2em;color:#fff;background-color:#000;display:block}@media(min-width: 576px){tw-dialog{max-width:50vw}}tw-dialog input[type=text]{font-size:inherit;width:100%;border:solid #fff !important}tw-dialog-links{text-align:right;display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end}tw-backdrop{z-index:999996;position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.8);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}tw-backdrop~tw-backdrop{display:none}tw-link,.enchantment-link{cursor:pointer;color:#4169e1;font-weight:bold;text-decoration:none;transition:color .2s ease-in-out}tw-passage [style^=color] tw-link:not(:hover),tw-passage [style*=" color"] tw-link:not(:hover),tw-passage [style^=color][hover=true] tw-link:hover,tw-passage [style*=" color"][hover=true] tw-link:hover,tw-passage [style^=color] .enchantment-link:not(:hover),tw-passage [style*=" color"] .enchantment-link:not(:hover),tw-passage [style^=color][hover=true] .enchantment-link:hover,tw-passage [style*=" color"][hover=true] .enchantment-link:hover{color:inherit}tw-link:hover,.enchantment-link:hover{color:#00bfff}tw-link:active,.enchantment-link:active{color:#dd4b39}.visited{color:#6941e1}tw-passage [style^=color] .visited:not(:hover),tw-passage [style*=" color"] .visited:not(:hover),tw-passage [style^=color][hover=true] .visited:hover,tw-passage [style*=" color"][hover=true] .visited:hover{color:inherit}.visited:hover{color:#e3e}tw-broken-link{color:#933;border-bottom:2px solid #933;cursor:not-allowed}tw-passage [style^=color] tw-broken-link:not(:hover),tw-passage [style*=" color"] tw-broken-link:not(:hover),tw-passage [style^=color][hover=true] tw-broken-link:hover,tw-passage [style*=" color"][hover=true] tw-broken-link:hover{color:inherit}tw-link.enchantment-mouseover,.link.enchantment-mouseover,tw-expression.enchantment-mouseover>tw-link{color:inherit;font-weight:inherit;transition:none;cursor:inherit;border-bottom:2px dashed #999}tw-link.enchantment-mouseover:hover,tw-link.enchantment-mouseover:active,.link.enchantment-mouseover:hover,.link.enchantment-mouseover:active,tw-expression.enchantment-mouseover>tw-link:hover,tw-expression.enchantment-mouseover>tw-link:active{color:inherit}tw-link.enchantment-mouseover.enchantment-button,.link.enchantment-mouseover.enchantment-button,tw-expression.enchantment-mouseover>tw-link.enchantment-button{border-style:dashed}tw-link.enchantment-mouseout,.link.enchantment-mouseout,tw-expression.enchantment-mouseout>tw-link{color:inherit;font-weight:inherit;transition:none;cursor:inherit;border:rgba(64,149,191,.6) 1px solid;border-radius:.2em}tw-link.enchantment-mouseout:hover,tw-link.enchantment-mouseout:active,.link.enchantment-mouseout:hover,.link.enchantment-mouseout:active,tw-expression.enchantment-mouseout>tw-link:hover,tw-expression.enchantment-mouseout>tw-link:active{color:inherit}tw-link.enchantment-mouseout:hover,.link.enchantment-mouseout:hover,tw-expression.enchantment-mouseout>tw-link:hover{background-color:rgba(175,197,207,.75);border:rgba(0,0,0,0) 1px solid}tw-link.enchantment-dblclick,.link.enchantment-dblclick,tw-expression.enchantment-dblclick>tw-link{color:inherit;font-weight:inherit;transition:none;cursor:inherit;cursor:pointer;border:2px solid #999;border-radius:0}tw-link.enchantment-dblclick:hover,tw-link.enchantment-dblclick:active,.link.enchantment-dblclick:hover,.link.enchantment-dblclick:active,tw-expression.enchantment-dblclick>tw-link:hover,tw-expression.enchantment-dblclick>tw-link:active{color:inherit}tw-link.enchantment-dblclick:active,.link.enchantment-dblclick:active,tw-expression.enchantment-dblclick>tw-link:active{background-color:#999}tw-link.enchantment-button,.link.enchantment-button,.enchantment-button:not(.link) tw-link,.enchantment-button:not(.link) .link{border-radius:16px;border-style:solid;border-width:2px;text-align:center;padding:0px 8px;display:block}.enchantment-button{display:block}.enchantment-clickblock{cursor:pointer;width:100%;height:100%;display:block}.enchantment-clickblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;color:rgba(65,105,225,.5);transition:color .2s ease-in-out}.enchantment-clickblock>:not(tw-enchantment):hover::after{color:rgba(0,191,255,.5)}.enchantment-clickblock>:not(tw-enchantment):active::after{color:rgba(222,78,59,.5)}.enchantment-clickblock>:not(tw-enchantment)::after{box-shadow:inset 0 0 0 .5vmax}.enchantment-clickblock>tw-passage::after,.enchantment-clickblock>tw-sidebar::after{box-shadow:0 0 0 .5vmax}.enchantment-mouseoverblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;border:2px dashed #999}.enchantment-mouseoutblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;border:rgba(64,149,191,.6) 2px solid}.enchantment-mouseoutblock:hover>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;background-color:rgba(175,197,207,.75);border:rgba(0,0,0,0) 2px solid;border-radius:.2em}.enchantment-dblclickblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;cursor:pointer;border:2px solid #999}tw-dialog-links{padding-top:1.5em}tw-dialog-links tw-link{border-radius:16px;border-style:solid;border-width:2px;text-align:center;padding:0px 8px;display:block;display:inline-block}html{margin:0;height:100%;overflow-x:hidden}*,:before,:after{position:relative;box-sizing:inherit}body{margin:0;height:100%}tw-storydata{display:none}tw-story{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;font:100% Georgia,serif;box-sizing:border-box;width:100%;min-height:100%;font-size:1.5em;line-height:1.5em;padding:5% 5%;overflow:hidden;background-color:#000;color:#fff}tw-story [style*=content-box] *{box-sizing:border-box}@media(min-width: 576px){tw-story{padding:5% 20%}}tw-story tw-consecutive-br{display:block;height:1.6ex;visibility:hidden}tw-story select{background-color:rgba(0,0,0,0);font:inherit;border-style:solid;padding:2px}tw-story select:not([disabled]){color:inherit}tw-story textarea{resize:none;background-color:rgba(0,0,0,0);font:inherit;color:inherit;border-style:none;padding:2px}tw-story input[type=text]{background-color:rgba(0,0,0,0);font:inherit;color:inherit;border-style:none}tw-story input[type=checkbox]{transform:scale(1.5);margin:0 .5em .5em .5em;vertical-align:middle}tw-story tw-noscript{animation:appear .8s}tw-passage{display:block}tw-sidebar{text-align:center;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}@media(min-width: 576px){tw-sidebar{left:-5em;width:3em;position:absolute;-ms-flex-direction:column;flex-direction:column}tw-enchantment[style*=width]>tw-sidebar{width:inherit}}tw-icon{display:inline-block;margin:.5em 0;font-size:66px;font-family:"Verdana",sans-serif}tw-icon[alt]{opacity:.2;cursor:pointer}tw-icon[alt]:hover{opacity:.4}tw-icon[data-label]::after{font-weight:bold;content:attr(data-label);font-size:20px;bottom:-20px;left:-50%;white-space:nowrap}tw-meter{display:block}tw-hook:empty,tw-expression:empty{display:none}tw-error{display:inline-block;border-radius:.2em;padding:.2em;font-size:1rem;cursor:help;white-space:pre-wrap}tw-error.error{background-color:rgba(223,58,190,.6);color:#fff}tw-error.warning{background-color:rgba(223,140,58,.6);color:#fff;display:none}.debug-mode tw-error.warning{display:inline}tw-error-explanation{display:block;font-size:.8rem;line-height:1rem}tw-open-button,tw-folddown{cursor:pointer;line-height:0em;border-radius:4px;border:1px solid rgba(255,255,255,.5);font-size:.8rem;margin:0 .2rem;padding:3px;white-space:pre}tw-folddown::after{content:"▶"}tw-folddown.open::after{content:"▼"}tw-open-button[replay]{display:none}tw-error tw-open-button,tw-eval-replay tw-open-button{display:inline !important}tw-open-button::after{content:attr(label)}tw-notifier{border-radius:.2em;padding:.2em;font-size:1rem;background-color:rgba(223,182,58,.4);display:none}.debug-mode tw-notifier{display:inline}tw-notifier::before{content:attr(message)}tw-colour{border:1px solid #000;display:inline-block;width:1em;height:1em}tw-enchantment:empty{display:none}h1{font-size:3em}h2{font-size:2.25em}h3{font-size:1.75em}h1,h2,h3,h4,h5,h6{line-height:1em;margin:.3em 0 .6em 0}pre{font-size:1rem;line-height:initial}small{font-size:70%}big{font-size:120%}mark{color:rgba(0,0,0,.6);background-color:#ff9}ins{color:rgba(0,0,0,.6);background-color:rgba(255,242,204,.5);border-radius:.5em;box-shadow:0em 0em .2em #ffe699;text-decoration:none}center{text-align:center;margin:0 auto;width:60%}blink{text-decoration:none;animation:fade-in-out 1s steps(1, end) infinite alternate}tw-align{display:block}tw-columns{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:justify;justify-content:space-between}.transition-in{animation:appear 0ms step-start}.transition-out{animation:appear 0ms step-end}[data-t8n^=dissolve].transition-in,[data-t8n=fade].transition-in{animation:appear .8s}[data-t8n^=dissolve].transition-out,[data-t8n=fade].transition-out{animation:appear .8s reverse}[data-t8n^=shudder].transition-in{display:inline-block !important;animation:shudder-in .8s}[data-t8n^=shudder].transition-out{display:inline-block !important;animation:shudder-in .8s reverse}[data-t8n^=rumble].transition-in{display:inline-block !important;animation:rumble-in .8s}[data-t8n^=rumble].transition-out{display:inline-block !important;animation:rumble-in .8s reverse}[data-t8n^=pulse].transition-in{animation:pulse .8s;display:inline-block !important}[data-t8n^=pulse].transition-out{animation:pulse .8s reverse;display:inline-block !important}[data-t8n^=zoom].transition-in{animation:zoom-in .8s;display:inline-block !important}[data-t8n^=zoom].transition-out{animation:zoom-in .8s reverse;display:inline-block !important}[data-t8n^=blur].transition-in{animation:blur .8s;display:inline-block !important}[data-t8n^=blur].transition-out{animation:blur .8s reverse;display:inline-block !important}[data-t8n^=slideleft].transition-in{animation:slide-left .8s;display:inline-block !important}[data-t8n^=slideleft].transition-out{animation:slide-right .8s reverse;display:inline-block !important}[data-t8n^=slideright].transition-in{animation:slide-right .8s;display:inline-block !important}[data-t8n^=slideright].transition-out{animation:slide-left .8s reverse;display:inline-block !important}[data-t8n^=slideup].transition-in{animation:slide-up .8s;display:inline-block !important}[data-t8n^=slideup].transition-out{animation:slide-down .8s reverse;display:inline-block !important}[data-t8n^=slidedown].transition-in{animation:slide-down .8s;display:inline-block !important}[data-t8n^=slidedown].transition-out{animation:slide-up .8s reverse;display:inline-block !important}[data-t8n^=fadeleft].transition-in{animation:fade-left .8s;display:inline-block !important}[data-t8n^=fadeleft].transition-out{animation:fade-right .8s reverse;display:inline-block !important}[data-t8n^=faderight].transition-in{animation:fade-right .8s;display:inline-block !important}[data-t8n^=faderight].transition-out{animation:fade-left .8s reverse;display:inline-block !important}[data-t8n^=fadeup].transition-in{animation:fade-up .8s;display:inline-block !important}[data-t8n^=fadeup].transition-out{animation:fade-down .8s reverse;display:inline-block !important}[data-t8n^=fadedown].transition-in{animation:fade-down .8s;display:inline-block !important}[data-t8n^=fadedown].transition-out{animation:fade-up .8s reverse;display:inline-block !important}[data-t8n^=flicker].transition-in{animation:flicker .8s}[data-t8n^=flicker].transition-out{animation:flicker .8s reverse}
 </style>
 </head>
 <body>
-<tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Tide of Truth.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Tide of Truth" startnode="4" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="A7F4C8E2-9B3D-4E5A-8F1B-2C3D9F6E7A1C" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryBanner" tags="header" position="100,425" size="100,100">
-&lt;!-- Static header: game title + right‑aligned save button only --&gt;
-&#39;&#39;Tide of Truth&#39;&#39; — //Predict the Waves, Protect the Town// (align:&quot;==&gt;&quot;)[ (link:&quot;💾 Save&quot;)[ (save-game:&quot;slot1&quot;) ] ]</tw-passagedata><tw-passagedata pid="2" name="StatusBar" tags="" position="100,200" size="100,100">
-|bar&gt;[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ] ]
-</tw-passagedata><tw-passagedata pid="3" name="StoryFooter" tags="footer" position="100,300" size="100,100">
-&lt;!-- empty for now --&gt;
-  </tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="200,100" size="100,100">
-(set:$playerName to (prompt: &quot;Your name please:&quot;,&quot;Jackie Chan&quot;))
+<tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Untitled Story.</tw-noscript></noscript></tw-story>
+<tw-storydata name="Untitled Story" startnode="4" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="16B0C484-EC23-48EE-9917-D173014F28F1" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="StoryBanner" tags="header" position="100,0" size="100,100">&#39;&#39;Tide of Truth&#39;&#39; — //Predict the Waves, Protect the Town// (align:&quot;==&gt;&quot;)[ (link:&quot;💾 Save&quot;)[ (save-game:&quot;slot1&quot;) ] ]</tw-passagedata><tw-passagedata pid="2" name="StatusBar" tags="" position="200,0" size="100,100">|bar&gt;[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:($secLeft%60) &lt; 10)[&#39;0&#39;](print:($secLeft%60)) ] ]&lt;br&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryFooter" tags="footer" position="1200,0" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="100,100" size="100,100">(set:$playerName to (prompt:&quot;Your Name:&quot;,&quot;Jackie&quot;))
 (set:$playerLevel to &quot;Beginner&quot;)
 (set:$credit to 0)
 (set:$hourLeft to 60)
-(set:$secLeft to 9999)  &lt;!-- 60 min × 60 s --&gt;
+(set:$secLeft to 3600)  &lt;!-- 60 min × 60 s --&gt;
 (set:$midDone to false)(set:$ampDone to false)(set:$perDone to false)
 (set:$isDamFortified to false)
 (set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Welcome to *Tide of Truth*.
-[[Enter-&gt;Intro]]
-  </tw-passagedata><tw-passagedata pid="5" name="Intro" tags="" position="200,200" size="100,100">(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg&quot;&gt;
+[[Enter-&gt;Intro]]</tw-passagedata><tw-passagedata pid="5" name="Intro" tags="" position="100,200" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You’re $playerName, eager to prove your math can save lives.
 * [[Begin-&gt;Backstory1]]
-* [[Take a moment-&gt;WaitBreath]]
-  </tw-passagedata><tw-passagedata pid="6" name="WaitBreath" tags="" position="200,300" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2018/12/20/08/07/western-gull-3885415_960_720.jpg&quot;&gt;
+* [[Take a moment-&gt;WaitBreath]]</tw-passagedata><tw-passagedata pid="6" name="WaitBreath" tags="" position="200,200" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2018/12/20/08/07/western-gull-3885415_960_720.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You breathe the salty air on Stormhaven’s pier, steadying your nerves.
-[[Ready-&gt;Backstory1]]</tw-passagedata><tw-passagedata pid="7" name="Backstory1" tags="" position="300,100" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
+[[Ready-&gt;Backstory1]]</tw-passagedata><tw-passagedata pid="7" name="Backstory1" tags="" position="100,300" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Stormhaven is proud but vulnerable, no stranger to hurricanes.
-[[Continue-&gt;Backstory2]]
-  </tw-passagedata><tw-passagedata pid="8" name="Backstory2" tags="" position="300,200" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/08/24/08/39/man-at-sea-1616458_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
+[[Continue-&gt;Backstory2]]</tw-passagedata><tw-passagedata pid="8" name="Backstory2" tags="" position="100,400" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/08/24/08/39/man-at-sea-1616458_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Hurricane *Calypso* brews offshore—your tide‑model skills could save thousands if you earn a task‑force badge.
-[[Request an interview-&gt;InterviewIntro]]
-  </tw-passagedata><tw-passagedata pid="9" name="InterviewIntro" tags="" position="300,300" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
+[[Request an interview-&gt;InterviewIntro]]</tw-passagedata><tw-passagedata pid="9" name="InterviewIntro" tags="" position="100,500" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 The council posts a lightning‑round trig quiz on the wall—three questions stand between you and the lab badge.
-[[Begin quiz-&gt;Q1]]
-  </tw-passagedata><tw-passagedata pid="10" name="Q1" tags="" position="400,100" size="100,100">
-(display:&quot;StatusBar&quot;)
+[[Begin quiz-&gt;Q1]]</tw-passagedata><tw-passagedata pid="10" name="Q1" tags="" position="300,300" size="100,100">(display:&quot;StatusBar&quot;)
 Hypotenuse with legs 7 km &amp; 24 km?
 * [[14 km-&gt;WrongQ1]]
 * [[17 km-&gt;WrongQ1]]
 * [[25 km-&gt;Q2]]
-* [[31 km-&gt;WrongQ1]]
-  </tw-passagedata><tw-passagedata pid="11" name="WrongQ1" tags="" position="400,200" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+* [[31 km-&gt;WrongQ1]]</tw-passagedata><tw-passagedata pid="11" name="WrongQ1" tags="" position="400,300" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Not quite—remember the 7‑24‑25 triple.
 (link:&quot;Video help&quot;)[(open-url:&quot;https://youtu.be/77XAdyWz5SM&quot;)]
-[[Retry-&gt;Q1]]
-  </tw-passagedata><tw-passagedata pid="12" name="Q2" tags="" position="400,300" size="100,100">
-(display:&quot;StatusBar&quot;)
+[[Retry-&gt;Q1]]</tw-passagedata><tw-passagedata pid="12" name="Q2" tags="" position="300,400" size="100,100">(display:&quot;StatusBar&quot;)
 If sin θ = 3/4 and opposite = 9 m, hypotenuse?
 * [[12 m-&gt;Q3]]
 * [[7.5 m-&gt;WrongQ2]]
 * [[6 m-&gt;WrongQ2]]
-* [[3 m-&gt;WrongQ2]]
-  </tw-passagedata><tw-passagedata pid="13" name="WrongQ2" tags="" position="400,400" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+* [[3 m-&gt;WrongQ2]]</tw-passagedata><tw-passagedata pid="13" name="WrongQ2" tags="" position="400,400" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Hint: hyp = 9 ÷ 0.75.
 (link:&quot;Video&quot;)[(open-url:&quot;https://youtu.be/77XAdyWz5SM&quot;)]
-[[Retry-&gt;Q2]]
-  </tw-passagedata><tw-passagedata pid="14" name="Q3" tags="" position="400,500" size="100,100">
-(display:&quot;StatusBar&quot;)
+[[Retry-&gt;Q2]]</tw-passagedata><tw-passagedata pid="14" name="Q3" tags="" position="300,500" size="100,100">(display:&quot;StatusBar&quot;)
 Hypotenuse = 5 m, opposite = 4 m. sin θ?
 * [[0.80-&gt;InterviewPass]]
 * [[1.60-&gt;WrongQ3]]
 * [[1.25-&gt;WrongQ3]]
-* [[3.00-&gt;WrongQ3]]
-  </tw-passagedata><tw-passagedata pid="15" name="WrongQ3" tags="" position="400,600" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+* [[3.00-&gt;WrongQ3]]</tw-passagedata><tw-passagedata pid="15" name="WrongQ3" tags="" position="400,500" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 sin θ = 4 / 5 = 0.8.
-[[Retry-&gt;Q3]]
-  </tw-passagedata><tw-passagedata pid="16" name="InterviewPass" tags="" position="500,100" size="100,100">
-(set:$playerLevel to &quot;Assistant&quot;)(set:$credit to (min:200,$credit+50))
+[[Retry-&gt;Q3]]</tw-passagedata><tw-passagedata pid="16" name="InterviewPass" tags="" position="300,100" size="100,100">(set:$playerLevel to &quot;Assistant&quot;)(set:$credit to (min:200,$credit+50))
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 ***Promoted to Assistant (+50 credit).***
-[[Proceed to Bootcamp-&gt;BootcampWelcome]]
-  </tw-passagedata><tw-passagedata pid="17" name="BootcampWelcome" tags="" position="500,200" size="100,100">
-
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/18/08/03/idea-2654148_1280.jpg&quot;&gt;
+[[Proceed to Bootcamp-&gt;BootcampWelcome]]</tw-passagedata><tw-passagedata pid="17" name="BootcampWelcome" tags="" position="400,100" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/18/08/03/idea-2654148_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Welcome to the **Tidal‑Model Bootcamp**.
-(link:&quot;Bootcamp rules&quot;)[Earn **+20** credit first correct pick, **−5** for each miss.&lt;br&gt;Hit 100 → Scientist, 150 → Leading Scientist.]
-[[Start work-&gt;BootcampIntro]]
-  </tw-passagedata><tw-passagedata pid="18" name="BootcampIntro" tags="" position="500,300" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:800px;&quot;&gt;
+(link-replace:&quot;Bootcamp rules&quot;)[Earn **+20** credit per first correct pick, **−5** for each miss. Reach **100** credit → Lab access, **150** → Leading Scientist.]
+[[Start work-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="18" name="BootcampIntro" tags="" position="600,100" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:500px;&quot;&gt;
 Choose a parameter to recover:
 (if: not $midDone)[* [[Midline-&gt;ParamMid]]]
 (if: not $ampDone)[* [[Amplitude-&gt;ParamAmp]]]
 (if: not $perDone)[* [[Period-&gt;ParamPer]]]
-(if: $midDone and $ampDone and $perDone)[Wow! you recovered all parameters, and now you want to rush to the computing center to let the super computer [[evaluate recovered model-&gt;BootcampEval]]](else:)[[[Or you can skip parameter recovery and head to War Room-&gt;WarRoom]]]
-</tw-passagedata><tw-passagedata pid="19" name="ParamMid" tags="" position="600,100" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:800px; float:right;&quot;&gt;
+(if: $midDone and $ampDone and $perDone)[Wow! you recovered all parameters, and now you want to rush to the computing center to let the super computer [[evaluate recovered model-&gt;BootcampEval]]](else:)[[[Or you can skip parameter recovery and head to War Room-&gt;WarRoom]]]</tw-passagedata><tw-passagedata pid="19" name="ParamMid" tags="" position="600,300" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:1000px; float:right;&quot;&gt;
 Midline value?
 * [[-8-&gt;MidRight]]
 * [[-18-&gt;MidWrong]]
 * [[14-&gt;MidWrong]]
-* [[2-&gt;MidWrong]]
-  </tw-passagedata><tw-passagedata pid="20" name="MidRight" tags="" position="600,200" size="100,100">
-(set:$credit to (min:200,$credit+20))(set:$midDone to true)
+* [[2-&gt;MidWrong]]</tw-passagedata><tw-passagedata pid="20" name="MidRight" tags="" position="700,300" size="100,100">(set:$credit to (min:200,$credit+20))(set:$midDone to true)
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Midline correct (+20).
-[[Back-&gt;BootcampIntro]]
-  </tw-passagedata><tw-passagedata pid="21" name="MidWrong" tags="" position="600,300" size="100,100">
-(set:$credit to (max:0,$credit-5))
+[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="21" name="MidWrong" tags="" position="500,300" size="100,100">(set:$credit to (max:0,$credit-5))
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 −5 credit: midline sits halfway between crest &amp; trough.
-[[Retry-&gt;ParamMid]]
-  </tw-passagedata><tw-passagedata pid="22" name="ParamAmp" tags="" position="600,400" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:800px; float:right;&quot;&gt;
+[[Retry-&gt;ParamMid]]</tw-passagedata><tw-passagedata pid="22" name="ParamAmp" tags="" position="600,400" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:1000px; float:right;&quot;&gt;
 Amplitude?
 * [[10-&gt;AmpRight]]
 * [[-8-&gt;AmpWrong]]
 * [[18-&gt;AmpWrong]]
-* [[6-&gt;AmpWrong]]
-  </tw-passagedata><tw-passagedata pid="23" name="AmpRight" tags="" position="600,500" size="100,100">
-(set:$credit to (min:200,$credit+20))(set:$ampDone to true)
+* [[6-&gt;AmpWrong]]</tw-passagedata><tw-passagedata pid="23" name="AmpRight" tags="" position="700,400" size="100,100">(set:$credit to (min:200,$credit+20))(set:$ampDone to true)
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Amplitude correct (+20).
-[[Back-&gt;BootcampIntro]]
-  </tw-passagedata><tw-passagedata pid="24" name="AmpWrong" tags="" position="600,600" size="100,100">
-(set:$credit to (max:0,$credit-5))
+[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="24" name="AmpWrong" tags="" position="500,400" size="100,100">(set:$credit to (max:0,$credit-5))
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 −5 credit: amplitude is peak height above the midline.
-[[Retry-&gt;ParamAmp]]
-  </tw-passagedata><tw-passagedata pid="25" name="ParamPer" tags="" position="600,700" size="100,100">
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://lh3.googleus
-ercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:800px; float:right;&quot;&gt;
+[[Retry-&gt;ParamAmp]]</tw-passagedata><tw-passagedata pid="25" name="ParamPer" tags="" position="600,500" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:1000px; float:right;&quot;&gt;
 Period?
 * [[16-&gt;PerRight]]
 * [[6.28-&gt;PerWrong]]
 * [[0.39-&gt;PerWrong]]
-* [[10-&gt;PerWrong]]
-  </tw-passagedata><tw-passagedata pid="26" name="PerRight" tags="" position="600,800" size="100,100">
-(set:$credit to (min:200,$credit+20))
-(set:$perDone to true)
+* [[10-&gt;PerWrong]]</tw-passagedata><tw-passagedata pid="26" name="PerRight" tags="" position="700,500" size="100,100">(set:$credit to (min:200,$credit+20))(set:$perDone to true)
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Period correct (+20).
-[[Back-&gt;BootcampIntro]]
-  </tw-passagedata><tw-passagedata pid="27" name="PerWrong" tags="" position="600,900" size="100,100">
-(set:$credit to (max:0,$credit-5))
+[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="27" name="PerWrong" tags="" position="500,500" size="100,100">(set:$credit to (max:0,$credit-5))
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:180px; float:right;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Period = one full cycle width (−5).
-[[Retry-&gt;ParamPer]]
-  </tw-passagedata><tw-passagedata pid="28" name="BootcampEval" tags="" position="700,100" size="100,100">
-(display:&quot;StatusBar&quot;)
+[[Retry-&gt;ParamPer]]</tw-passagedata><tw-passagedata pid="28" name="BootcampEval" tags="" position="700,100" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;!-- Anticipation text + branching --&gt;
 &lt;!-- Anticipation text + branching --&gt;
 (if:$credit &gt;= 150)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Your **$credit credit** smashes the record—welcome, **Leading Scientist**! The [[high-tech research lab-&gt;LabStart]] doors slide open for you to craft a brand-new model before Calypso hits.
 ](elseif:$credit &gt;= 100)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/06/14/16/20/network-2402637_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Great job! With $credit credit you’re now a **Scientist**. You’ll head to the [[high-tech research lab-&gt;LabStart]] to fit a fresh equation and guide the engineers.
 ](else:)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2012/12/08/23/23/control-room-69118_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2012/12/08/23/23/control-room-69118_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You’ve gathered $credit credit—short of promotion, but your insights are still crucial. The council calls you straight to the War Room to vote on the flood-wall.
 [[Head to War Room-&gt;WarRoom]]
-]</tw-passagedata><tw-passagedata pid="29" name="LabStart" tags="" position="700,200" size="100,100">
-(set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)(set:$secLeft to 3600)
+]</tw-passagedata><tw-passagedata pid="29" name="LabStart" tags="" position="900,100" size="100,100">(set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)
 (set:$hourLeft to 60)
 (set:$secLeft to 3600)
-(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+(live:1s)[
+  (set:$secLeft to $secLeft-1)
+  (set:$hourLeft to (floor:$secLeft/60))
+  (replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:($secLeft%60) &lt; 10)[&#39;0&#39;](print:($secLeft%60)) ] ]
+  (if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]
+] (if:$hourLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]
 (display:&quot;StatusBar&quot;)
-
 Hurricane Calypso is ~30 h out; engineers need one hour’s notice. Your model must be ready in **60 minutes**.
 
 Stormhaven’s data team offers **two distinct feeds** to anchor your model:
@@ -202,33 +149,34 @@ Stormhaven’s data team offers **two distinct feeds** to anchor your model:
 * **Jamie’s lighthouse logs** — Jamie scoured dusty ledgers with the retired keeper and cross‑checked peaks with seasoned fishermen. Rich historical peaks but slightly noisy. *(costs 4 min)* [[Use Jamie’s logs (–4 min)-&gt;DataJamie]]
 * **Port Authority buoy stream** — a laser‑calibrated buoy outside the breakwater posts readings every 30 seconds. Ultra‑fresh but only covers the last 18 hours. *(costs 2 min)* [[Tap buoy stream (–2 min)-&gt;DataBuoy]]
 
-Choose wisely; whichever dataset you trust will set the curve of *f(x)=A·sin(B·(x+C))+D*—and every minute counts.
-</tw-passagedata><tw-passagedata pid="30" name="DataJamie" tags="" position="800,325" size="100,100">
-(set:$hourLeft to $hourLeft-4)
+Choose wisely; whichever dataset you trust will set the curve of *f(x)=A·sin(B·(x+C))+D*—and every minute counts.</tw-passagedata><tw-passagedata pid="30" name="DataJamie" tags="" position="900,200" size="100,100">
 (set:$secLeft to $secLeft-240)   &lt;!-- 4 min --&gt;
 (display:&quot;StatusBar&quot;)
 (live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2021/01/01/22/12/lighthouse-5880159_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2021/01/01/22/12/lighthouse-5880159_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Jamie’s logs record tide peaks and the tide level at other point in time.  
 These data will seed *f(x)=A·sin(B·(x+C))+D*, where **A** is amplitude, **B** sets frequency, **C** shifts phase, **D** is mid-sea-level.
-You can not wait puting the data point into a [[Chart-&gt;LabChart]]...
-  </tw-passagedata><tw-passagedata pid="31" name="DataBuoy" tags="" position="700,325" size="100,100">
-(set:$hourLeft to $hourLeft-2)
+You can not wait puting the data point into a [[Chart-&gt;LabChart]]...</tw-passagedata><tw-passagedata pid="31" name="DataBuoy" tags="" position="1000,200" size="100,100">(set:$hourLeft to $hourLeft-2)
+(set:$secLeft to $secLeft-120)  &lt;!-- subtract 2 min --&gt;
 (set:$secLeft to $secLeft-120)   &lt;!-- 2 min --&gt;
 (display:&quot;StatusBar&quot;)
-(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2020/02/12/20/38/buoy-4843825_1280.jpg&quot;&gt;
-Buoy sensors stream tide heights every 30 min—clean, high-resolution curves.  
-You’ll fit them to *f(x)=A·sin(B·(x+C))+D* by tuning each coefficient.
-[[Chart-&gt;LabChart]]
-  </tw-passagedata><tw-passagedata pid="32" name="LabChart" tags="" position="700,500" size="100,100">
-(display:&quot;StatusBar&quot;)
-(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2020/02/12/20/38/buoy-4843825_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+Buoy sensors stream heights every 30 min—clean data for *f(x)=A·sin(B·(x+C))+D*.
+[[Chart-&gt;LabChart]]</tw-passagedata><tw-passagedata pid="32" name="LabChart" tags="" position="900,300" size="100,100">(display:&quot;StatusBar&quot;)
+
+&lt;!-- 1‑second live countdown that updates the status bar --&gt;
+(live:1s)[
+    (set:$secLeft to $secLeft-1)
+    (replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ]  ]
+    (if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]
+]
+
 &lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczONXZG6QUFyJzzzM2TNs47LKV5mMts3t3OPnZb5NCEYJi6bI66_tLoCVNgwKcr-2mYIDaOkJkYqijQtzn-kjHGmUEltLXGZn18LcwhbcUf_CoiK5p0uB08yrcwx28KHDt5wyiIJ0QkN_I3R-xQQD0Q=w1070-h934-s-no?authuser=0&quot; style=&quot;max-width:800px;&quot;&gt;
 Forecast model: *f(x)=A·sin(B·(x+C))+D*  
 Pick values that align the curve with your dataset.
 
-*f(x)=(dropdown: bind $A,&quot;select&quot;,&quot;5.0&quot;,&quot;4.8&quot;,&quot;1.0&quot;,&quot;3.3&quot;,&quot;12.4&quot;,&quot;36π&quot;,&quot;5π&quot;)·sin((dropdown: bind $B,&quot;select&quot;,&quot;11/14&quot;,&quot;π/4&quot;,&quot;22/7&quot;,&quot;1.57&quot;,&quot;3.42&quot;,&quot;2π&quot;,&quot;10&quot;)·(x+(dropdown: bind $C,&quot;select&quot;,&quot;6.0&quot;,&quot;5.8&quot;,&quot;3π/2&quot;,&quot;11/14&quot;,&quot;22/7&quot;,&quot;4.9&quot;,&quot;13.6&quot;)))+(dropdown: bind $D,&quot;select&quot;,&quot;10&quot;,&quot;11&quot;,&quot;9&quot;,&quot;12&quot;,&quot;15&quot;,&quot;8&quot;,&quot;5&quot;)*
+
+*f(x)= (dropdown: bind $A,&quot;select&quot;,&quot;5.0&quot;,&quot;4.8&quot;,&quot;1.0&quot;,&quot;3.3&quot;,&quot;12.4&quot;,&quot;36π&quot;,&quot;5π&quot;) · sin((dropdown: bind $B,&quot;select&quot;,&quot;11/14&quot;,&quot;π/4&quot;,&quot;22/7&quot;,&quot;1.57&quot;,&quot;3.42&quot;,&quot;2π&quot;,&quot;10&quot;) · (x + (dropdown: bind $C,&quot;select&quot;,&quot;6.0&quot;,&quot;5.8&quot;,&quot;3π/2&quot;,&quot;11/14&quot;,&quot;22/7&quot;,&quot;4.9&quot;,&quot;13.6&quot;))) + (dropdown: bind $D,&quot;select&quot;,&quot;10&quot;,&quot;11&quot;,&quot;9&quot;,&quot;12&quot;,&quot;15&quot;,&quot;8&quot;,&quot;5&quot;)*
 
 |submit&gt;[]
 
@@ -241,8 +189,7 @@ Pick values that align the curve with your dataset.
     ]
   ]
 ]
-</tw-passagedata><tw-passagedata pid="33" name="ModelEval" tags="" position="700,600" size="100,100">
-&lt;!-- Evaluate coefficient selection, THEN show status bar so values are current --&gt;
+</tw-passagedata><tw-passagedata pid="33" name="ModelEval" tags="" position="900,400" size="100,100">&lt;!-- Evaluate coefficient selection, THEN show status bar so values are current --&gt;
 (live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[ &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) ]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 (set:$correct to 0)
 (if:$A is &quot;5.0&quot; or $A is &quot;4.8&quot;)[(set:$correct to $correct+1)]
@@ -258,64 +205,56 @@ You scored $correct / 4.
 Every mismatch nudges the forecast off course—refine and out‑smart the storm!
 
 (if:$credit &lt; 20)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You tried your best, however, you do not have enough credit to move on. Maybe taking a step back working as an assistant is your best fit (set:$playerLevel to &quot;Assistant&quot;)(dialog:&quot;Bootcamp again. I will be back soon!&quot;)(goto:&quot;BootcampWelcome&quot;)]
 
 (if:$correct is 4)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/19/woman-2685460_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/19/woman-2685460_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 [[You are excited and dash to the War Room-&gt;WarRoom]] with your model]
 (elseif:$correct is 3)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/20/woman-2685461_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/20/woman-2685461_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Not quite right! you definitely will not give up, you will [[refine the model (no penalty)-&gt;LabChart]]]
 (elseif:$correct is 2)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Not there yet, what&#39;s wrong? you want to[[retry (–10)-&gt;LabChart]]]
 (elseif:$correct is 1)[
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot;&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Never mind, I will[[retry (–20)-&gt;LabChart]]]
-(else:)[[[Retry (–50)-&gt;LabChart]]]
-
-  </tw-passagedata><tw-passagedata pid="34" name="WarRoom" tags="" position="800,100" size="100,100">
+(else:)[[[Retry (–50)-&gt;LabChart]]]</tw-passagedata><tw-passagedata pid="34" name="WarRoom" tags="" position="900,500" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2021/10/29/09/27/lake-6751477_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+Hard-hatted engineers crowd the table: concrete and inflatable walls are ready. Calypso’s surge is close. Fortify or gamble?
+* [[Authorize flood-wall crews-&gt;FortYes]]
+* [[Hold off—trust the existing dam-&gt;FortNo]]</tw-passagedata><tw-passagedata pid="35" name="FortYes" tags="" position="1100,500" size="100,100">(set:$isDamFortified to true)
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2021/10/29/09/27/lake-6751477_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
-Hard‑hatted engineers crowd the situation table: “Give us the green light,” they plead, concrete barriers and inflatable flood walls loaded on flatbeds.  
-Your forecast shows how high Calypso’s surge may climb—fortification takes the full hour you have left.  
-Should the city spend the budget and raise a temporary wall before water arrives?
-* [[Authorize flood‑wall crews-&gt;FortYes]]
-* [[Hold off—trust the existing dam-&gt;FortNo]]
-  </tw-passagedata><tw-passagedata pid="35" name="FortYes" tags="" position="1050,200" size="100,100">
-(set:$isDamFortified to true)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+Crews race to raise barriers—only $hourLeft min remain as Calypso’s bands loom.
+[[Outcome-&gt;Outcome]]</tw-passagedata><tw-passagedata pid="36" name="FortNo" tags="" position="1200,500" size="100,100">(set:$isDamFortified to false)
 (display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
-Sirens echo as crews race to stack concrete blocks and deploy inflatable flood walls—every minute counts, and you have only $hourLeft left.  
-Forklifts rumble while distant thunder signals Calypso’s advance.  
-[[Outcome-&gt;Outcome]]
-  </tw-passagedata><tw-passagedata pid="36" name="FortNo" tags="" position="900,275" size="100,100">
-(set:$isDamFortified to false)
-(display:&quot;StatusBar&quot;)
-&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg&quot; style=&quot;max-width:600px;&quot;&gt;
-You hesitate—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge.  
-All eyes turn to the aging dam, silhouetted against the storm‑lit horizon.  
-[[Outcome-&gt;Outcome]]
-  </tw-passagedata><tw-passagedata pid="37" name="Outcome" tags="" position="950,450" size="100,100"> &lt;!-- Determine result, show landfall video, then auto-advance after 10 s --&gt;
-
-&lt;video src=&quot;https://cdn.pixabay.com/video/2019/12/05/29831-377694384_large.mp4&quot; autoplay loop muted style=&quot;max-width:600px;&quot;&gt;&lt;/video&gt;
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+You wait—just $hourLeft min left; the old dam stands alone in lightning flashes.
+[[Outcome-&gt;Outcome]]</tw-passagedata><tw-passagedata pid="37" name="Outcome" tags="" position="1200,300" size="100,100">(display:&quot;StatusBar&quot;)
+(set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))
+&lt;video src=&quot;https://cdn.pixabay.com/video/2019/12/05/29831-377694384_large.mp4&quot; autoplay loop muted style=&quot;max-width:1000px;&quot;&gt;&lt;/video&gt;
 The roar of Calypso slams the coast—spray lashes the dam as seconds crawl by…
-
 (live:10s)[
-  (if: $isDamFortified)[(goto:&quot;EndProtected&quot;)]
-  (elseif: $overflow)[(goto:&quot;EndFlooded&quot;)]
+  (if:$isDamFortified)[(goto:&quot;EndProtected&quot;)]
+  (elseif:$overflow)[(goto:&quot;EndFlooded&quot;)]
   (else:)[(goto:&quot;EndProtected&quot;)]
-]</tw-passagedata><tw-passagedata pid="38" name="EndProtected" tags="" position="800,500" size="100,100">
-(display:&quot;StatusBar&quot;)
+]</tw-passagedata><tw-passagedata pid="38" name="EndProtected" tags="" position="1100,100" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 (if:$playerLevel is &quot;Assistant&quot;)[
-Your quick, clear-headed work in **Bootcamp** gave Stormhaven the numbers it needed—even without time in the lab. Engineers built the flood‑wall exactly where you advised, and not a single street is wet.  
+Your quick Bootcamp work gave Stormhaven the numbers it needed—even without lab time. The new wall holds; you saved the town!
+](else:)[
+Your lab model nailed Calypso’s crest. The wall holds, and scientists salute your precision. Well done!
 ]
-(else:)[
-Your lab-forged tide model nailed Calypso’s crest. Crews salute your precision as the new wall holds back a roaring surge. **Scientist** notoriety earned!  
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="39" name="EndFlooded" tags="" position="1200,100" size="100,100">(display:&quot;StatusBar&quot;)
+&lt;img src=&quot;https://cdn.pixabay.com/photo/2020/06/22/21/10/flooded-5330617_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+(if:$playerLevel is &quot;Assistant&quot;)[
+Your Bootcamp insights fell short without a lab-tuned model—water overtopped the dam. Study the waves and try again.
+](else:)[
+One coefficient off let the flood through—Calypso teaches a hard lesson. Revisit the data and return stronger.
 ]
-[[Restart-&gt;Start]]
-  </tw-passagedata><tw-passagedata pid="39" name="Untitled Passage" tags="" position="0,0" size="100,100">` element with attributes for passage ID, name, tags, and position, as required by Twine&#39;s HTML import format. The content within each passage retains the original Twine macros, links, and HTML elements (e.g., ``, ``), ensuring compatibility with the Harlowe story format specified in the `` tag. The artifact is wrapped in a single `` tag with a unique UUID, title, and content type as per the instructions. You can save this HTML file and import it into Twine to run the interactive story &quot;Tide of Truth.&quot;</tw-passagedata></tw-storydata>
+[[Restart-&gt;Start]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
