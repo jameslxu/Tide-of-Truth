@@ -13,7 +13,7 @@
 <!-- empty for now -->
 
 :: Start
-(set:$playerName to "")
+(set:$playerName to (prompt:"Your Name: ","Jackie Chan"))
 (set:$playerLevel to "Beginner")
 (set:$credit to 0)
 (set:$hourLeft to 60)
@@ -21,18 +21,20 @@
 (set:$isDamFortified to false)
 (set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))
 (display:"StatusBar")
-Welcome to *Tide of Truth*.
-What’s your name?
-|(input-box: bind $playerName)[Enter]->[[Intro]]
+<img src="https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg" style="max-width:600px;">
+Welcome to *Tide of Truth*. 
+[[Enter->Intro]]
 
 :: Intro
 (display:"StatusBar")
+<img src="https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg">
 You’re $playerName, eager to prove your math can save lives.
 * [[Begin->Backstory1]]
 * [[Take a moment->WaitBreath]]
 
 :: WaitBreath
 (display:"StatusBar")
+<img src="https://cdn.pixabay.com/photo/2018/12/20/08/07/western-gull-3885415_960_720.jpg">
 You breathe the salty air on Stormhaven’s pier, steadying your nerves.
 [[Ready->Backstory1]]
 
@@ -109,7 +111,7 @@ sin θ = 4 / 5 = 0.8.
 (set:$hourLeft to 60)
 (display:"StatusBar")
 Welcome to the **Tidal‑Model Bootcamp**.
-(link:"Bootcamp rules")[Earn **+20** credit first correct pick, **−5** for each miss.<br>Hit 100 → Scientist, 150 → Leading Scientist.](hide:(link-replace:"Bootcamp rules"))
+(link-replace:"Bootcamp rules")[Earn **+20** credit first correct pick, **−5** for each miss.<br>Hit 100 → Scientist, 150 → Leading Scientist.]
 [[Start work->BootcampIntro]]
 
 :: BootcampIntro
@@ -119,11 +121,11 @@ Choose a parameter to recover:
 (if: not $midDone)[* [[Midline->ParamMid]]]
 (if: not $ampDone)[* [[Amplitude->ParamAmp]]]
 (if: not $perDone)[* [[Period->ParamPer]]]
-(elseif:)[[[Evaluate->BootcampEval]]]
+(if: $midDone and $ampDone and $perDone)[[[Evaluate recovered model->BootcampEval]]]+(else:)[[[Skip parameter recovery and head to War Room->WarRoom]] ]
 
 :: ParamMid
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:200px; float:right;">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:800px; float:right;">
 Midline value?
 * [[-8->MidRight]]
 * [[-18->MidWrong]]
@@ -146,7 +148,7 @@ Midline correct (+20).
 
 :: ParamAmp
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:200px; float:right;">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:800px; float:right;">
 Amplitude?
 * [[10->AmpRight]]
 * [[-8->AmpWrong]]
@@ -169,7 +171,7 @@ Amplitude correct (+20).
 
 :: ParamPer
 (display:"StatusBar")
-<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:200px; float:right;">
+<img src="https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0" style="max-width:800px; float:right;">
 Period?
 * [[16->PerRight]]
 * [[6.28->PerWrong]]
@@ -194,11 +196,11 @@ Period = one full cycle width (−5).
 :: BootcampEval
 (display:"StatusBar")
 (if:$credit >= 150)[(set:$playerLevel to "Leading Scientist")Badge unlocked! [[Enter Lab->LabStart]]]
-(elseif:$credit >= 100)[(set:$playerLevel to "Scientist")Promotion achieved—welcome to the lab. [[Enter Lab->LabStart]]]
-(else:)[Credit below 100—use borrowed model. [[Go to War Room->WarRoom]]]
++(elseif:$credit >= 100)[(set:$playerLevel to "Scientist")Promotion achieved—welcome to the lab. [[Enter Lab->LabStart]]]
++(else:)[Credit below 100—use borrowed model. [[Go to War Room->WarRoom]]]
 
 :: LabStart
-(unset:$Aok)(unset:$Bok)(unset:$Cok)(unset:$Dok)
+(set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)
 (live:60s)[(set:$hourLeft to $hourLeft-1)(if:$hourLeft <= 0)[(goto:"BootcampWelcome")]]
 (display:"StatusBar")
 Hurricane Calypso is ~30 h out; engineers need an hour’s warning to fortify.  
@@ -224,15 +226,23 @@ You’ll fit them to *f(x)=A·sin(B·(x+C))+D* by tuning each coefficient.
 
 :: LabChart
 (display:"StatusBar")
+<img src="https://lh3.googleusercontent.com/pw/AP1GczONXZG6QUFyJzzzM2TNs47LKV5mMts3t3OPnZb5NCEYJi6bI66_tLoCVNgwKcr-2mYIDaOkJkYqijQtzn-kjHGmUEltLXGZn18LcwhbcUf_CoiK5p0uB08yrcwx28KHDt5wyiIJ0QkN_I3R-xQQD0Q=w1070-h934-s-no?authuser=0" style="max-width:800px;">
 Forecast model: *f(x)=A·sin(B·(x+C))+D*  
 Pick values that align the curve with your dataset.
 
-(dropdown: bind $A,"select","5.0","4.8","1.0","3.3","12.4","36π","5π")
-(dropdown: bind $B,"select","11/14","π/4","22/7","1.57","3.42","2π","10")
-(dropdown: bind $C,"select","6.0","5.8","3π/2","11/14","22/7","4.9","13.6")
-(dropdown: bind $D,"select","10","11","9","12","15","8","5")
+A = (dropdown: bind $A,"select","5.0","4.8","1.0","3.3","12.4","36π","5π")
+B = (dropdown: bind $B,"select","11/14","π/4","22/7","1.57","3.42","2π","10")
+C = (dropdown: bind $C,"select","6.0","5.8","3π/2","11/14","22/7","4.9","13.6")
+D = (dropdown: bind $D,"select","10","11","9","12","15","8","5")
 
-(if:$A isnot "select" and $B isnot "select" and $C isnot "select" and $D isnot "select")[[Submit->ModelEval]]
+{
+(if: $A is not "select" and $B is not "select"
+    and $C is not "select" and $D is not "select")
+  [[Submit->ModelEval]]
+(else:)
+  (text-color:#888)[(italic:Submit once all four are chosen)]
+}
+
 
 :: ModelEval
 <!-- Evaluate coefficient selection, THEN show status bar so values are current -->
@@ -243,17 +253,17 @@ Pick values that align the curve with your dataset.
 (if:$D is "10" or $D is "11" or $D is "9")[(set:$correct to $correct+1)]
 <!-- Apply credit penalties BEFORE status bar -->
 (if:$correct is 2)[(set:$credit to (max:0,$credit-10))]
-(elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))]
-(elseif:$correct is 0)[(set:$credit to (max:0,$credit-50))]
++(elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))]
++(elseif:$correct is 0)[(set:$credit to (max:0,$credit-50))]
 (display:"StatusBar")
 You scored $correct / 4.  
 Every mismatch nudges the forecast off course—refine and out‑smart the storm!
 
 (if:$correct is 4)[[[WarRoom->WarRoom]]]
-(elseif:$correct is 3)[[[Refine (no penalty)->LabChart]]]
-(elseif:$correct is 2)[[[Retry (–10)->LabChart]]]
-(elseif:$correct is 1)[[[Retry (–20)->LabChart]]]
-(else:)[[[Retry (–50)->LabChart]]]
++(elseif:$correct is 3)[[[Refine (no penalty)->LabChart]]]
++(elseif:$correct is 2)[[[Retry (–10)->LabChart]]]
++(elseif:$correct is 1)[[[Retry (–20)->LabChart]]]
++(else:)[[[Retry (–50)->LabChart]]]
 (if:$credit < 20)[(set:$playerLevel to "Assistant")(goto:"BootcampWelcome")]
 
 :: WarRoom
@@ -269,37 +279,45 @@ Should the city spend the budget and raise a temporary wall before water arrives
 (set:$isDamFortified to true)
 (display:"StatusBar")
 <img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:600px;">
-Sirens echo as crews race to stack concrete blocks and deploy inflatable flood walls—every minute counts, and you have only $hourLeft left.  
-Forklifts rumble while distant thunder signals Calypso’s advance.  
-[[Outcome->Outcome]] as crews race to stack concrete blocks and deploy inflatable flood walls—every minute counts, and you have only $hourLeft left.  
-Forklifts rumble while distant thunder signals Calypso’s advance.  
+Sirens echo as crews race to stack concrete blocks and inflate flood walls—only $hourLeft minutes remain as Calypso’s spiral bands creep over the horizon.
 [[Outcome->Outcome]]
 
 :: FortNo
 (set:$isDamFortified to false)
 (display:"StatusBar")
 <img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:600px;">
-You hesitate—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge.  
-All eyes turn to the aging dam, silhouetted against the storm‑lit horizon.  
+You hesitate—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge. All eyes turn to the aging dam, silhouetted against lightning flashes.
+[[Outcome->Outcome]]
+(set:$isDamFortified to false)
+(display:"StatusBar")
+<img src="https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg" style="max-width:600px;">
+You hesitate—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge. All eyes turn to the aging dam, silhouetted against lightning flashes.
 [[Outcome->Outcome]]—budget stays untouched as the clock ticks: just $hourLeft minutes until the surge.  
 All eyes turn to the aging dam, silhouetted against the storm-lit horizon.  
 [[Outcome->Outcome]]
 
 :: Outcome
-<!-- Determine result, show landfall video, then auto-advance after 10 s -->
-(set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))
-(set:$endTarget to (if:$isDamFortified)["EndProtected"](elseif:$overflow)["EndFlooded"](else:"EndProtected"))
 (display:"StatusBar")
+(set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))
 <video src="https://cdn.pixabay.com/video/2019/12/05/29831-377694384_large.mp4" autoplay loop muted style="max-width:600px;"></video>
 The roar of Calypso slams the coast—spray lashes the dam as seconds crawl by…
-(live:10s)[(goto:$endTarget)]
+(live:10s)[
+  (if: $isDamFortified)[(goto:"EndProtected")]
+  +(elseif: $overflow)[(goto:"EndFlooded")]
+  +(else:)[(goto:"EndProtected")]
+] slams the coast—spray lashes the dam as seconds crawl by…
+(live:10s)[
+  (if: $isDamFortified)[(goto:"EndProtected")]
+  +(elseif: $overflow)[(goto:"EndFlooded")]
+  +(else:)[(goto:"EndProtected")]
+]
 
 :: EndProtected
 (display:"StatusBar")
 (if:$playerLevel is "Assistant")[
 Your quick, clear-headed work in **Bootcamp** gave Stormhaven the numbers it needed—even without time in the lab. Engineers built the flood‑wall exactly where you advised, and not a single street is wet.  
 ]
-(else:)[
++(else:)[
 Your lab-forged tide model nailed Calypso’s crest. Crews salute your precision as the new wall holds back a roaring surge. **Scientist** notoriety earned!  
 ]
 [[Restart->Start]]
@@ -309,7 +327,7 @@ Your lab-forged tide model nailed Calypso’s crest. Crews salute your precision
 (if:$playerLevel is "Assistant")[
 Your Bootcamp insights were solid, but without a lab-tuned model the estimate fell short—the surge spilled over the aging dam. Stormhaven will rebuild, and so will your experience. Study the patterns and try again.  
 ]
-(else:)[
++(else:)[
 Even seasoned scientists can misread a storm—one coefficient off and the flood slipped through. Calypso teaches a hard lesson: revisit your data and return stronger.  
 ]
 [[Restart->Start]]
