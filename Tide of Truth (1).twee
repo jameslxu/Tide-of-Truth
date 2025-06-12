@@ -78,12 +78,6 @@ Welcome to the **Tidal‑Model Bootcamp**.
 [[Start work->BootcampIntro]]
 
 
-:: CountdownTick \\\  [widget\\] {"position":"0,400","size":"100,100"}
-<<widget "CountdownTick">>
-  <<(replace:?bar)[<div class="statusBar"> ''Level:'' $playerLevel | ''Credit:'' $credit | ''Time left:'' (print:(floor:$secLeft/60)):(if:($secLeft%60)<10)['0'](print:($secLeft%60)) </div>]>>
-  <<endwidget>>
-
-
 :: DataBuoy {"position":"600,200","size":"100,100"}
 (set:$secLeft to $secLeft-120)  <!-- subtract 2 min -->(display:"StatusBar")(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[<div class="statusBar"> ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:$secLeft%60 < 10)[0](print:$secLeft%60) </div>]  ](if:$secLeft <= 0)[(goto:"BootcampWelcome")]]
 <img src="https://cdn.pixabay.com/photo/2020/02/12/20/38/buoy-4843825_1280.jpg" style="max-width:1000px;">
@@ -92,7 +86,7 @@ Buoy sensors stream heights every 30 min—clean data for *f(x)=A·sin(B·(x+C))
 
 
 :: DataJamie {"position":"700,200","size":"100,100"}
-(set:$secLeft to $secLeft-240)   <!-- 4 min -->(display:"StatusBar")(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[<div class="statusBar"> ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:$secLeft%60 < 10)['0'](print:$secLeft%60) </div>]  ](if:$secLeft <= 0)[(goto:"BootcampWelcome")]]
+(set:$secLeft to $secLeft-240)   <!-- 4 min -->(display:"StatusBar")(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[<div class="statusBar"> ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:$secLeft%60 < 10)[0](print:$secLeft%60) </div>]  ](if:$secLeft <= 0)[(goto:"BootcampWelcome")]]
 <img src="https://cdn.pixabay.com/photo/2021/01/01/22/12/lighthouse-5880159_1280.jpg" style="max-width:1000px;">
 Jamie’s logs record tide peaks and the tide level at other point in time.  
 These data will seed *f(x)=A·sin(B·(x+C))+D*, where **A** is amplitude, **B** sets frequency, **C** shifts phase, **D** is mid-sea-level.
@@ -105,6 +99,7 @@ You can not wait puting the data point into a [[Chart->LabChart]]...
 (if:$playerLevel is "Assistant")[
 Your Bootcamp insights fell short without a lab-tuned model—water overtopped the dam. Study the waves and try again.
 ](else:)[
+Oops,
 One coefficient off let the flood through—Calypso teaches a hard lesson. Revisit the data and return stronger.
 ]
 [[Restart->Start]]
@@ -116,6 +111,7 @@ One coefficient off let the flood through—Calypso teaches a hard lesson. Revis
 (if:$playerLevel is "Assistant")[
 Your quick Bootcamp work gave Stormhaven the numbers it needed—even without lab time. The new wall holds; you saved the town!
 ](else:)[
+Well done!!!
 Your lab model nailed Calypso’s crest. The wall holds, and scientists salute your precision. Well done!
 ]
 [[Restart->Start]]
@@ -186,7 +182,6 @@ Pick values that align the curve with your dataset.
 
 :: LabStart {"position":"700,100","size":"100,100"}
 (set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)(display:"StatusBar")(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[<div class="statusBar"> ''Level:'' $playerLevel | ''Credit:'' $credit (if:$secLeft < 3600)[| ''Time left:'' (print:(floor:$secLeft/60)):(if:$secLeft%60 < 10)[0](print:$secLeft%60) </div>]  ](if:$secLeft <= 0)[(goto:"BootcampWelcome")]]
-] 
 Hurricane Calypso is ~30 h out; engineers need one hour’s notice. Your model must be ready in **60 minutes**.
 
 Stormhaven’s data team offers **two distinct feeds** to anchor your model:
