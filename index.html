@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Tide of Truth.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Tide of Truth" startnode="32" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="16B0C484-EC23-48EE-9917-D173014F28F1" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/***** Global Color Scheme & Layout (CSS only) *****/
+<tw-storydata name="Tide of Truth" startnode="31" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="16B0C484-EC23-48EE-9917-D173014F28F1" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/***** Global Color Scheme & Layout (CSS only) *****/
 :root {
   --darkBlue:#203a80;
   --lightBlue:#e9f1ff;
@@ -166,51 +166,51 @@ Crack **all three** clues to resurrect the old model—or skip and rely on guess
 (if: $midDone and $ampDone and $perDone)[Wow! you recovered all parameters, and now you want to rush to the computing center to let the super computer [[evaluate recovered model-&gt;BootcampEval]]](else:)[[[Or you can skip parameter recovery and head to War Room-&gt;WarRoom]]]</tw-passagedata><tw-passagedata pid="7" name="BootcampWelcome" tags="" position="400,700" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/18/08/03/idea-2654148_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Welcome to the **Tidal‑Model Bootcamp**.
 (link-replace:&quot;Bootcamp rules&quot;)[Earn **+20** credit per first correct pick, **−5** for each miss. Reach **80** credit you will be promoted to Scientist with Lab access, **100** → Leading Scientist.]
-[[Start work-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="8" name="CountdownTick \ " tags="widget\" position="0,400" size="100,100">&lt;&lt;widget &quot;CountdownTick&quot;&gt;&gt;
-  &lt;&lt;(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit | &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:($secLeft%60)&lt;10)[&#39;0&#39;](print:($secLeft%60)) &lt;/div&gt;]&gt;&gt;
-  &lt;&lt;endwidget&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="DataBuoy" tags="" position="600,200" size="100,100">(set:$secLeft to $secLeft-120)  &lt;!-- subtract 2 min --&gt;(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+[[Start work-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="8" name="DataBuoy" tags="" position="600,200" size="100,100">(set:$secLeft to $secLeft-120)  &lt;!-- subtract 2 min --&gt;(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2020/02/12/20/38/buoy-4843825_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Buoy sensors stream heights every 30 min—clean data for *f(x)=A·sin(B·(x+C))+D*.
-[[Chart-&gt;LabChart]]</tw-passagedata><tw-passagedata pid="10" name="DataJamie" tags="" position="700,200" size="100,100">(set:$secLeft to $secLeft-240)   &lt;!-- 4 min --&gt;(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[&#39;0&#39;](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+[[Chart-&gt;LabChart]]</tw-passagedata><tw-passagedata pid="9" name="DataJamie" tags="" position="700,200" size="100,100">(set:$secLeft to $secLeft-240)   &lt;!-- 4 min --&gt;(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2021/01/01/22/12/lighthouse-5880159_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Jamie’s logs record tide peaks and the tide level at other point in time.  
 These data will seed *f(x)=A·sin(B·(x+C))+D*, where **A** is amplitude, **B** sets frequency, **C** shifts phase, **D** is mid-sea-level.
-You can not wait puting the data point into a [[Chart-&gt;LabChart]]...</tw-passagedata><tw-passagedata pid="11" name="EndFlooded" tags="" position="500,0" size="100,100">(display:&quot;StatusBar&quot;)
+You can not wait puting the data point into a [[Chart-&gt;LabChart]]...</tw-passagedata><tw-passagedata pid="10" name="EndFlooded" tags="" position="500,0" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2020/06/22/21/10/flooded-5330617_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 (if:$playerLevel is &quot;Assistant&quot;)[
 Your Bootcamp insights fell short without a lab-tuned model—water overtopped the dam. Study the waves and try again.
 ](else:)[
+Oops,
 One coefficient off let the flood through—Calypso teaches a hard lesson. Revisit the data and return stronger.
 ]
-[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="12" name="EndProtected" tags="" position="400,0" size="100,100">(display:&quot;StatusBar&quot;)
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="11" name="EndProtected" tags="" position="400,0" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2023/12/05/08/23/port-8431044_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 (if:$playerLevel is &quot;Assistant&quot;)[
 Your quick Bootcamp work gave Stormhaven the numbers it needed—even without lab time. The new wall holds; you saved the town!
 ](else:)[
+Well done!!!
 Your lab model nailed Calypso’s crest. The wall holds, and scientists salute your precision. Well done!
 ]
-[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="13" name="FortNo" tags="" position="700,600" size="100,100">(set:$isDamFortified to false)(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="12" name="FortNo" tags="" position="700,600" size="100,100">(set:$isDamFortified to false)(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You wait—just $hourLeft min left; the old dam stands alone in lightning flashes.
-[[Outcome-&gt;Outcome]]</tw-passagedata><tw-passagedata pid="14" name="FortYes" tags="" position="600,600" size="100,100">(set:$isDamFortified to true)(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+[[Outcome-&gt;Outcome]]</tw-passagedata><tw-passagedata pid="13" name="FortYes" tags="" position="600,600" size="100,100">(set:$isDamFortified to true)(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2017/09/21/07/49/dam-2771008_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Crews race to raise barriers—only $hourLeft min remain as Calypso’s bands loom.
-[[Outcome-&gt;Outcome]]</tw-passagedata><tw-passagedata pid="15" name="InterviewIntro" tags="" position="100,500" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+[[Outcome-&gt;Outcome]]</tw-passagedata><tw-passagedata pid="14" name="InterviewIntro" tags="" position="100,500" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/photo/2017/07/20/03/53/homework-2521144_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 
 
 Before issuing badges, the council runs an objective math screen.  
 Three rapid‑fire trig questions—retry if you miss, but Calypso’s clock keeps ticking.  
 Ace them to join the Task‑Force as Assistant and pocket 50 credit.
 
-[[Begin quiz-&gt;Q1]]</tw-passagedata><tw-passagedata pid="16" name="InterviewPass" tags="" position="400,800" size="100,100">(set:$playerLevel to &quot;Assistant&quot;)(set:$credit to (min:200,$credit+50))(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
+[[Begin quiz-&gt;Q1]]</tw-passagedata><tw-passagedata pid="15" name="InterviewPass" tags="" position="400,800" size="100,100">(set:$playerLevel to &quot;Assistant&quot;)(set:$credit to (min:200,$credit+50))(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 ***Promoted to Assistant (+50 credit).***
-[[Proceed to Bootcamp-&gt;BootcampWelcome]]</tw-passagedata><tw-passagedata pid="17" name="Intro" tags="" position="100,200" size="100,100">(display:&quot;StatusBar&quot;)&lt;img class=&quot;respimg&quot; src=&quot;https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+[[Proceed to Bootcamp-&gt;BootcampWelcome]]</tw-passagedata><tw-passagedata pid="16" name="Intro" tags="" position="100,200" size="100,100">(display:&quot;StatusBar&quot;)&lt;img class=&quot;respimg&quot; src=&quot;https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You’re $playerName, a 17‑year‑old trig whiz fresh from finals.  
 Stormhaven hired you as a junior data intern for this very crisis.  
 Prove that equations can be as heroic as sandbags.
 
 * [[Begin-&gt;Backstory1]]
-* [[Take a moment-&gt;WaitBreath]]</tw-passagedata><tw-passagedata pid="18" name="LabChart" tags="" position="700,300" size="100,100">(display:&quot;StatusBar&quot;)&lt;!-- 1‑second live countdown that updates the status bar --&gt;(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt;  &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+* [[Take a moment-&gt;WaitBreath]]</tw-passagedata><tw-passagedata pid="17" name="LabChart" tags="" position="700,300" size="100,100">(display:&quot;StatusBar&quot;)&lt;!-- 1‑second live countdown that updates the status bar --&gt;(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt;  &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 &lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczONXZG6QUFyJzzzM2TNs47LKV5mMts3t3OPnZb5NCEYJi6bI66_tLoCVNgwKcr-2mYIDaOkJkYqijQtzn-kjHGmUEltLXGZn18LcwhbcUf_CoiK5p0uB08yrcwx28KHDt5wyiIJ0QkN_I3R-xQQD0Q=w1070-h934-s-no?authuser=0&quot; style=&quot;max-width:800px;&quot;&gt;
 Forecast model: *f(x)=A·sin(B·(x+C))+D*  
 Pick values that align the curve with your dataset.
@@ -228,8 +228,7 @@ Pick values that align the curve with your dataset.
       (text-color:#888)[//Choose all four coefficients to enable Submit//]
     ]
   ]
-]</tw-passagedata><tw-passagedata pid="19" name="LabStart" tags="" position="700,100" size="100,100">(set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
-] 
+]</tw-passagedata><tw-passagedata pid="18" name="LabStart" tags="" position="700,100" size="100,100">(set:$Aok to false)(set:$Bok to false)(set:$Cok to false)(set:$Dok to false)(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 Hurricane Calypso is ~30 h out; engineers need one hour’s notice. Your model must be ready in **60 minutes**.
 
 Stormhaven’s data team offers **two distinct feeds** to anchor your model:
@@ -237,14 +236,14 @@ Stormhaven’s data team offers **two distinct feeds** to anchor your model:
 * **Jamie’s lighthouse logs** — Jamie scoured dusty ledgers with the retired keeper and cross‑checked peaks with seasoned fishermen. Rich historical peaks but slightly noisy. *(costs 4 min)* [[Use Jamie’s logs (–4 min)-&gt;DataJamie]]
 * **Port Authority buoy stream** — a laser‑calibrated buoy outside the breakwater posts readings every 30 seconds. Ultra‑fresh but only covers the last 18 hours. *(costs 2 min)* [[Tap buoy stream (–2 min)-&gt;DataBuoy]]
 
-Choose wisely; whichever dataset you trust will set the curve of *f(x)=A·sin(B·(x+C))+D*—and every minute counts.</tw-passagedata><tw-passagedata pid="20" name="MidRight" tags="" position="500,300" size="100,100">(set:$credit to (min:200,$credit+20))(set:$midDone to true)(display:&quot;StatusBar&quot;)
+Choose wisely; whichever dataset you trust will set the curve of *f(x)=A·sin(B·(x+C))+D*—and every minute counts.</tw-passagedata><tw-passagedata pid="19" name="MidRight" tags="" position="500,300" size="100,100">(set:$credit to (min:200,$credit+20))(set:$midDone to true)(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Midline correct (+20).
-[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="21" name="MidWrong" tags="" position="300,300" size="100,100">(set:$credit to (max:0,$credit-5))
+[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="20" name="MidWrong" tags="" position="300,300" size="100,100">(set:$credit to (max:0,$credit-5))
 (display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 −5 credit: midline sits halfway between crest &amp; trough.
-[[Retry-&gt;ParamMid]]</tw-passagedata><tw-passagedata pid="22" name="ModelEval" tags="" position="700,400" size="100,100">(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+[[Retry-&gt;ParamMid]]</tw-passagedata><tw-passagedata pid="21" name="ModelEval" tags="" position="700,400" size="100,100">(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 (set:$correct to 0)(if:$A is &quot;5.0&quot; or $A is &quot;4.8&quot;)[(set:$correct to $correct+1)](if:$B is &quot;11/14&quot; or $B is &quot;π/4&quot;)[(set:$correct to $correct+1)](if:$C is &quot;6.0&quot; or $C is &quot;5.8&quot;)[(set:$correct to $correct+1)](if:$D is &quot;10&quot; or $D is &quot;11&quot; or $D is &quot;9&quot;)[(set:$correct to $correct+1)]&lt;!-- Apply credit penalties BEFORE status bar --&gt;(if:$correct is 2)[(set:$credit to (max:0,$credit-10))](elseif:$correct is 1)[(set:$credit to (max:0,$credit-20))](elseif:$correct is 0)[(set:$credit to (max:0,$credit-50))]
 You scored $correct / 4.  
 Every mismatch nudges the forecast off course—refine and out‑smart the storm!(if:$credit &lt; 20)[
@@ -262,7 +261,7 @@ Not there yet, what&#39;s wrong? you want to[[retry (–10)-&gt;LabChart]]]
 (elseif:$correct is 1)[
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2017/08/27/09/21/woman-2685462_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Never mind, I will[[retry (–20)-&gt;LabChart]]]
-(else:)[[[Retry (–50)-&gt;LabChart]]]</tw-passagedata><tw-passagedata pid="23" name="Outcome" tags="" position="700,800" size="100,100">(set:$secLeft to 9999)(display:&quot;StatusBar&quot;)
+(else:)[[[Retry (–50)-&gt;LabChart]]]</tw-passagedata><tw-passagedata pid="22" name="Outcome" tags="" position="700,800" size="100,100">(set:$secLeft to 9999)(display:&quot;StatusBar&quot;)
 (set:$overflow to (either:true,true,true,true,true,true,true,true,false,false))
 &lt;video src=&quot;https://cdn.pixabay.com/video/2019/12/05/29831-377694384_large.mp4&quot; autoplay loop muted style=&quot;max-width:1000px;&quot;&gt;&lt;/video&gt;
 The roar of Calypso slams the coast—spray lashes the dam as seconds crawl by…
@@ -270,65 +269,65 @@ The roar of Calypso slams the coast—spray lashes the dam as seconds crawl by�
   (if:$isDamFortified)[(goto:&quot;EndProtected&quot;)]
   (elseif:$overflow)[(goto:&quot;EndFlooded&quot;)]
   (else:)[(goto:&quot;EndProtected&quot;)]
-]</tw-passagedata><tw-passagedata pid="24" name="ParamAmp" tags="" position="400,400" size="100,100">(display:&quot;StatusBar&quot;)
+]</tw-passagedata><tw-passagedata pid="23" name="ParamAmp" tags="" position="400,400" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:1000px; float:right;&quot;&gt;
 Amplitude?
 * [[10-&gt;AmpRight]]
 * [[-8-&gt;AmpWrong]]
 * [[18-&gt;AmpWrong]]
-* [[6-&gt;AmpWrong]]</tw-passagedata><tw-passagedata pid="25" name="ParamMid" tags="" position="400,300" size="100,100">(display:&quot;StatusBar&quot;)
+* [[6-&gt;AmpWrong]]</tw-passagedata><tw-passagedata pid="24" name="ParamMid" tags="" position="400,300" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:1000px; float:right;&quot;&gt;
 Midline value?
 * [[-8-&gt;MidRight]]
 * [[-18-&gt;MidWrong]]
 * [[14-&gt;MidWrong]]
-* [[2-&gt;MidWrong]]</tw-passagedata><tw-passagedata pid="26" name="ParamPer" tags="" position="400,500" size="100,100">(display:&quot;StatusBar&quot;)
+* [[2-&gt;MidWrong]]</tw-passagedata><tw-passagedata pid="25" name="ParamPer" tags="" position="400,500" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://lh3.googleusercontent.com/pw/AP1GczMaKSbISXMR3LDjoXo4E5YfnuIfbOTxRUPfVE-wP4Pks-hPY4un2xx89LFa5UGnyH8aT_ggO2312YPPwtRwAV-jyquCpEpZ8ky6fhWJMJSH0vxuP0G2TL3-hqAbHLjDXThllgIIYMrCBPFqfzgnFT4=w531-h577-s-no-gm?authuser=0&quot; style=&quot;max-width:1000px; float:right;&quot;&gt;
 Period?
 * [[16-&gt;PerRight]]
 * [[6.28-&gt;PerWrong]]
 * [[0.39-&gt;PerWrong]]
-* [[10-&gt;PerWrong]]</tw-passagedata><tw-passagedata pid="27" name="PerRight" tags="" position="500,500" size="100,100">(set:$credit to (min:200,$credit+20))(set:$perDone to true)(display:&quot;StatusBar&quot;)
+* [[10-&gt;PerWrong]]</tw-passagedata><tw-passagedata pid="26" name="PerRight" tags="" position="500,500" size="100,100">(set:$credit to (min:200,$credit+20))(set:$perDone to true)(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/animation/2024/07/10/18/35/18-35-03-832_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Period correct (+20).
-[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="28" name="PerWrong" tags="" position="300,500" size="100,100">(set:$credit to (max:0,$credit-5))
+[[Back-&gt;BootcampIntro]]</tw-passagedata><tw-passagedata pid="27" name="PerWrong" tags="" position="300,500" size="100,100">(set:$credit to (max:0,$credit-5))
 (display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Period = one full cycle width (−5).
-[[Retry-&gt;ParamPer]]</tw-passagedata><tw-passagedata pid="29" name="Q1" tags="" position="100,600" size="100,100">(display:&quot;StatusBar&quot;)
+[[Retry-&gt;ParamPer]]</tw-passagedata><tw-passagedata pid="28" name="Q1" tags="" position="100,600" size="100,100">(display:&quot;StatusBar&quot;)
 Question 1 of 3: Hypotenuse with legs 7 km &amp; 24 km?
 * [[14 km-&gt;WrongQ1]]
 * [[17 km-&gt;WrongQ1]]
 * [[25 km-&gt;Q2]]
-* [[31 km-&gt;WrongQ1]]</tw-passagedata><tw-passagedata pid="30" name="Q2" tags="" position="100,700" size="100,100">(display:&quot;StatusBar&quot;)
+* [[31 km-&gt;WrongQ1]]</tw-passagedata><tw-passagedata pid="29" name="Q2" tags="" position="100,700" size="100,100">(display:&quot;StatusBar&quot;)
 Question 2 of 3: If sin θ = 3/4 and opposite = 9 m, hypotenuse?
 * [[12 m-&gt;Q3]]
 * [[7.5 m-&gt;WrongQ2]]
 * [[6 m-&gt;WrongQ2]]
-* [[3 m-&gt;WrongQ2]]</tw-passagedata><tw-passagedata pid="31" name="Q3" tags="" position="100,800" size="100,100">(display:&quot;StatusBar&quot;)
+* [[3 m-&gt;WrongQ2]]</tw-passagedata><tw-passagedata pid="30" name="Q3" tags="" position="100,800" size="100,100">(display:&quot;StatusBar&quot;)
 Question 3 of 3: Hypotenuse = 5 m, opposite = 4 m. sin θ?
 * [[0.80-&gt;InterviewPass]]
 * [[1.60-&gt;WrongQ3]]
 * [[1.25-&gt;WrongQ3]]
-* [[3.00-&gt;WrongQ3]]</tw-passagedata><tw-passagedata pid="32" name="Start" tags="" position="100,100" size="100,100">(set:$labSecondsInitial to 3600)(set:$jamiePenaltySeconds to 240)(set:$buoyPenaltySeconds to 120)(set:$playerName to (prompt:&quot;Your Name:&quot;,&quot;Jackie&quot;))(set:$playerLevel to &quot;Beginner&quot;)(set:$credit to 0)(set:$secLeft to 9999)(set:$hourLeft to (floor:$secLeft/60))(set:$midDone to false)(set:$ampDone to false)(set:$perDone to false)(set:$isDamFortified to false)(set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
+* [[3.00-&gt;WrongQ3]]</tw-passagedata><tw-passagedata pid="31" name="Start" tags="" position="100,100" size="100,100">(set:$labSecondsInitial to 3600)(set:$jamiePenaltySeconds to 240)(set:$buoyPenaltySeconds to 120)(set:$playerName to (prompt:&quot;Your Name:&quot;,&quot;Jackie&quot;))(set:$playerLevel to &quot;Beginner&quot;)(set:$credit to 0)(set:$secLeft to 9999)(set:$hourLeft to (floor:$secLeft/60))(set:$midDone to false)(set:$ampDone to false)(set:$perDone to false)(set:$isDamFortified to false)(set:$landfallTime to (either:0,1,2,3,4,5,6,7,8,9))(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/11/19/17/25/blue-1840457_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 
-[[Welcome to *Tide of Truth*.-&gt;Intro]]</tw-passagedata><tw-passagedata pid="33" name="StatusBar" tags="" position="0,300" size="100,100">|bar&gt;[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft&lt;=$labSecondsInitial)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:($secLeft%60)&lt;10)[0](print:($secLeft%60)) &lt;/div&gt;]]</tw-passagedata><tw-passagedata pid="34" name="StoryBanner" tags="header" position="0,200" size="100,100">&lt;span id=&quot;gameHeader&quot;&gt;Tide of Truth — &lt;i&gt;Predict the Waves, Protect the Town&lt;/i&gt;&lt;span&gt;(link:&quot;💾 Save&quot;)[ (save-game:&quot;slot1&quot;) ]&lt;/span&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="StoryFooter" tags="footer" position="700,0" size="100,100">&lt;span id=&quot;gameFooter&quot;&gt;Developed by James Xu as a course class work of  &lt;i&gt; Game-based Teaching (EDCG 634) &lt;/i&gt;  from Umass Boston&lt;/span&gt;</tw-passagedata><tw-passagedata pid="36" name="WaitBreath" tags="" position="200,200" size="100,100">(display:&quot;StatusBar&quot;)
+[[Welcome to *Tide of Truth*.-&gt;Intro]]</tw-passagedata><tw-passagedata pid="32" name="StatusBar" tags="" position="0,300" size="100,100">|bar&gt;[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft&lt;=$labSecondsInitial)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:($secLeft%60)&lt;10)[0](print:($secLeft%60)) &lt;/div&gt;]]</tw-passagedata><tw-passagedata pid="33" name="StoryBanner" tags="header" position="0,200" size="100,100">&lt;span id=&quot;gameHeader&quot;&gt;Tide of Truth — &lt;i&gt;Predict the Waves, Protect the Town&lt;/i&gt;&lt;span&gt;(link:&quot;💾 Save&quot;)[ (save-game:&quot;slot1&quot;) ]&lt;/span&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="34" name="StoryFooter" tags="footer" position="700,0" size="100,100">&lt;span id=&quot;gameFooter&quot;&gt;Developed by James Xu as a course class work of  &lt;i&gt; Game-based Teaching (EDCG 634) &lt;/i&gt;  from Umass Boston&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="WaitBreath" tags="" position="200,200" size="100,100">(display:&quot;StatusBar&quot;)
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2018/12/20/08/07/western-gull-3885415_960_720.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 You breathe the salty air on Stormhaven’s pier, steadying your nerves.
-[[Ready-&gt;Backstory1]]</tw-passagedata><tw-passagedata pid="37" name="WarRoom" tags="" position="700,500" size="100,100">(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
+[[Ready-&gt;Backstory1]]</tw-passagedata><tw-passagedata pid="36" name="WarRoom" tags="" position="700,500" size="100,100">(display:&quot;StatusBar&quot;)(live:1s)[(set:$secLeft to $secLeft-1)(replace:?bar)[&lt;div class=&quot;statusBar&quot;&gt; &#39;&#39;Level:&#39;&#39; $playerLevel | &#39;&#39;Credit:&#39;&#39; $credit (if:$secLeft &lt; 3600)[| &#39;&#39;Time left:&#39;&#39; (print:(floor:$secLeft/60)):(if:$secLeft%60 &lt; 10)[0](print:$secLeft%60) &lt;/div&gt;]  ](if:$secLeft &lt;= 0)[(goto:&quot;BootcampWelcome&quot;)]]
 &lt;img src=&quot;https://cdn.pixabay.com/photo/2021/10/29/09/27/lake-6751477_1280.jpg&quot; style=&quot;max-width:1000px;&quot;&gt;
 Hard-hatted engineers crowd the table: concrete and inflatable walls are ready. Calypso’s surge is close. Fortify or gamble?
 * [[Authorize flood-wall crews-&gt;FortYes]]
-* [[Hold off—trust the existing dam-&gt;FortNo]]</tw-passagedata><tw-passagedata pid="38" name="WrongQ1" tags="" position="200,600" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
+* [[Hold off—trust the existing dam-&gt;FortNo]]</tw-passagedata><tw-passagedata pid="37" name="WrongQ1" tags="" position="200,600" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Question 1 of 3: Hypotenuse with legs 7 km &amp; 24 km?
 Not quite—remember the 7‑24‑25 triple.
 (link:&quot;Video help&quot;)[(open-url:&quot;https://youtu.be/77XAdyWz5SM&quot;)]
-[[Retry-&gt;Q1]]</tw-passagedata><tw-passagedata pid="39" name="WrongQ2" tags="" position="200,700" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
+[[Retry-&gt;Q1]]</tw-passagedata><tw-passagedata pid="38" name="WrongQ2" tags="" position="200,700" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Question 2 of 3: If sin θ = 3/4 and opposite = 9 m, hypotenuse?
 Think again ...
 Hint: hyp = 9 ÷ 0.75.
 (link:&quot;Video&quot;)[(open-url:&quot;https://youtu.be/77XAdyWz5SM&quot;)]
-[[Retry-&gt;Q2]]</tw-passagedata><tw-passagedata pid="40" name="WrongQ3" tags="" position="200,800" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
+[[Retry-&gt;Q2]]</tw-passagedata><tw-passagedata pid="39" name="WrongQ3" tags="" position="200,800" size="100,100">(display:&quot;StatusBar&quot;)&lt;img src=&quot;https://cdn.pixabay.com/animation/2023/05/13/15/05/15-05-46-966_512.gif&quot; style=&quot;max-width:160px; float:right;&quot;&gt;
 Question 3 of 3: Hypotenuse = 5 m, opposite = 4 m. sin θ?
 Try harder ... consider sin θ = 4 / 5 = 0.8.
 [[Retry-&gt;Q3]]</tw-passagedata></tw-storydata>
